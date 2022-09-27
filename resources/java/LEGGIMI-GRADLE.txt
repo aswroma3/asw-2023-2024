@@ -1,0 +1,34 @@
+Quest'anno Gradle mi dà saltuariamente problemi di questo tipo: 
+
+FAILURE: Build failed with an exception.
+
+* Where:
+Build file '/home/asw/projects/asw-810-introduzione-connettori/f-client-server/build.gradle' line: 13
+
+* What went wrong:
+A problem occurred evaluating root project 'f-client-server'.
+> Failed to apply plugin 'org.gradle.java'.
+   > Could not create plugin of type 'JavaPlugin'.
+      > Could not create service of type OutputFilesRepository using ExecutionGradleServices.createOutputFilesRepository().
+         > java.io.IOException: Cannot delete file: /home/asw/projects/asw-810-introduzione-connettori/f-client-server/.gradle/buildOutputCleanup/outputFiles.bin
+
+MOTIVO? 
+Sospetto che sia legato al passaggio da una major version di Gradle alla successiva. 
+
+CHE FARE? 
+Mi sembra sufficiente cancellare la precedente cartella .gradle all'interno di ciascun progetto 
+
+Ecco un'altra potenziale soluzione: 
+https://discuss.gradle.org/t/could-not-create-service-of-type-outputfilesrepository-using-executiongradleservices-createoutputfilesrepository/32770
+
+ps -edalf | grep gradle
+oppure 
+ps -edalf | grep gradle | grep -v grep 
+
+e poi
+kill {gradle process id}
+
+oppure 
+gradle --status mostra i demoni attivi 
+gradle --stop uccide i demoni attivi
+

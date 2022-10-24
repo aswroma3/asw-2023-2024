@@ -86,9 +86,9 @@ Nei casi più semplici, è possibile eseguire un'applicazione come segue:
 
 * [asw-820-spring-framework](asw-820-spring-framework/): introduzione a *Spring* 
 
-<!---
 * [asw-825-spring-boot](asw-825-spring-boot/): *Spring Boot* 
 
+<!---
 * [asw-830-grpc](asw-830-grpc/): invocazione remota con *gRPC* 
 
 * [asw-835-rest](asw-835-rest/): invocazione remota con *REST* 

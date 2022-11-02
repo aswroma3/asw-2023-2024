@@ -90,9 +90,9 @@ Nei casi più semplici, è possibile eseguire un'applicazione come segue:
 
 * [asw-830-grpc](asw-830-grpc/): invocazione remota con *gRPC* 
 
-<!---
 * [asw-835-rest](asw-835-rest/): invocazione remota con *REST* 
 
+<!---
 * [asw-840-kafka](asw-840-kafka/): comunicazione asincrona con *Kafka*
 
 * [asw-850-spring-cloud](asw-850-spring-cloud/): *Spring Cloud* 

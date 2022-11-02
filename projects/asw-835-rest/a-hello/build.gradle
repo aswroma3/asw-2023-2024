@@ -1,0 +1,29 @@
+buildscript {
+	ext {
+		springBootVersion = '2.7.4'
+		springDependencyManagementVersion = '1.0.14.RELEASE'
+	}
+	repositories {
+		mavenCentral()
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+	}
+}
+
+subprojects {
+
+	apply plugin: 'java'
+
+	group = 'asw.rest'
+	sourceCompatibility = '11'
+
+	repositories {
+		mavenCentral()
+	}
+
+	tasks.named('test') {
+		useJUnitPlatform()
+	}
+
+}

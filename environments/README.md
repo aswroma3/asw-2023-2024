@@ -56,14 +56,14 @@ E' anche possibile:
   i progetti (in questo e, anche negli altri ambienti) potranno essere trovati 
   nella cartella **/home/asw/projects/** oppure nella cartella **projects/** dell'utente di default 
 
-<!---
-
 * [workstation](workstation/):
   un ambiente alternativo a [developer](developer/) per la compilazione e l'assemblaggio (build) dei progetti e per la loro esecuzione; 
   rispetto a [developer](developer/) ha una configurazione più potente in termini di memoria e processore 
   (dunque richiede maggiori risorse nel computer host), 
   per consentire anche l'esecuzione concorrente di molteplici applicazioni; 
   oltre al software di sviluppo per *Java*, ha anche *Docker* e *Docker Compose* 
+
+<!---
 
 * [kube-cluster](kube-cluster/):
   un ambiente costituito da un cluster di nodi *Kubernetes* (*kube-1*, *kube-2* e *kube-3*)

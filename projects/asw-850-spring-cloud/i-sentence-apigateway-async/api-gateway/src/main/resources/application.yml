@@ -1,0 +1,90 @@
+# application.yml 
+--- 
+spring: 
+  application: 
+    name: apigateway
+  cloud:
+    consul:
+      host: localhost
+      port: 8500
+      discovery: 
+        instanceId: ${spring.application.name}-${spring.cloud.client.hostname}-${random.value}
+        healthCheckPath: /actuator/health
+        healthCheckInterval: 10s
+        # configurazione per effettuare esprimenti, NON USARE UN PRODUZIONE 
+        # dopo quanto tempo consul deve smettere di restituire servizi che non rispondono all'health check? 
+        healthCheckCriticalTimeout: 45s
+        # consul deve restituire solo servizi che passano l'health check (default=false) 
+        queryPassing: true 
+    loadbalancer: 
+      ribbon.enabled: false 
+    # spring cloud gateway routes 
+    gateway:
+      discovery:
+        locator:
+          # spring.cloud.gateway.discovery.locator.enabled abilita la definizione implicita di rotte 
+          # sulla base dei servizi registrati nel servizio di service discover (default=false) 
+          # enabled: true       
+          enabled: false
+      routes:
+      - id: sentence_route
+        uri: lb://sentence
+        predicates:
+        - Path=/
+        filters:
+        - SetPath=/
+        - name: CircuitBreaker
+          args: 
+            name: defaultCircuitBreaker 
+            fallbackUri: forward:/fallback/sentence
+      - id: subject_route
+        uri: lb://subject
+        predicates:
+        - Path=/subject
+        filters:
+        - SetPath=/
+        - name: CircuitBreaker
+          args: 
+            name: defaultCircuitBreaker 
+            fallbackUri: forward:/fallback/subject
+      - id: verb_route
+        uri: lb://verb
+        predicates:
+        - Path=/verb
+        filters:
+        - SetPath=/
+        - name: CircuitBreaker
+          args: 
+            name: defaultCircuitBreaker 
+            fallbackUri: forward:/fallback/verb
+      - id: object_route
+        uri: lb://object
+        predicates:
+        - Path=/object
+        filters:
+        - SetPath=/
+        - name: CircuitBreaker
+          args: 
+            name: defaultCircuitBreaker 
+            fallbackUri: forward:/fallback/object
+      - id: index_route
+        uri: lb://sentence
+        predicates:
+        - Path=/index.html
+        filters:
+        - SetPath=/index.html
+    
+server: 
+#  port: ${PORT:${SERVER_PORT:0}}
+  port: 8080
+
+management: 
+  endpoint.gateway.enabled: true 
+  endpoints.web.exposure.include: info,health,gateway,beans
+
+logging:
+  level:
+    root: INFO
+    org.springframework.web: INFO
+    org.springframework.web.HttpLogging: INFO
+    org.springframework.cloud.gateway: INFO

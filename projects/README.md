@@ -112,11 +112,11 @@ Nei casi più semplici, è possibile eseguire un'applicazione come segue:
   nient'altro da escludere 
 -->
 
-<!---
-
 ## Progetti Docker 
 
 * [asw-880-docker](asw-880-docker/): introduzione a *Docker* 
+
+<!---
 
 * [asw-885-docker-composizione](asw-885-docker-composizione/): *composizione* di *container Docker* 
 

@@ -116,10 +116,9 @@ Nei casi più semplici, è possibile eseguire un'applicazione come segue:
 
 * [asw-880-docker](asw-880-docker/): introduzione a *Docker* 
 
+* [asw-885-docker-spring](asw-885-docker-spring/): esecuzione di applicazioni *Spring* con *Docker* 
+
 <!---
-
-* [asw-885-docker-composizione](asw-885-docker-composizione/): *composizione* di *container Docker* 
-
 
 * [asw-899-docker-su-swarm](asw-899-docker-su-swarm/): rilascio di un'applicazione multi-servizi e multi-container sullo swarm *swarm.inf.uniroma3.it*
 -->

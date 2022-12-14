@@ -133,10 +133,12 @@ Nei casi più semplici, è possibile eseguire un'applicazione come segue:
   nient'altro da escludere 
 -->
 
-<!---
 
 ## Progetti per l'anno accademico 2022-2023 
 
+* [asw-goodbooks](asw-goodbooks/): *GoodBooks*: un semplice social network per la condivisione di recensioni di libri 
+
+<!---
 * [asw-edipogram](asw-edipogram/): *Edipogram*: un semplice social network per la condivisione di enigmi e giochi enigmistici 
 
 * [asw-sfingegram](asw-sfingegram/): *Sfingegram*: un semplice social network per la condivisione di enigmi (ovvero, giochi enigmistici) 

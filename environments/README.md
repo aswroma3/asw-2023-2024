@@ -63,8 +63,6 @@ E' anche possibile:
   per consentire anche l'esecuzione concorrente di molteplici applicazioni; 
   oltre al software di sviluppo per *Java*, ha anche *Docker* e *Docker Compose* 
 
-<!---
-
 * [kube-cluster](kube-cluster/):
   un ambiente costituito da un cluster di nodi *Kubernetes* (*kube-1*, *kube-2* e *kube-3*)
   più un nodo per la compilazione dei progetti e per la costruzione delle immagini dei container *Docker*; 
@@ -73,6 +71,7 @@ E' anche possibile:
 
 
 
+<!---
   nulla di altro da escludere, in questo momento 
 --> 
 

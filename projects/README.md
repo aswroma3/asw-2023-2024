@@ -123,12 +123,12 @@ Nei casi più semplici, è possibile eseguire un'applicazione come segue:
 * [asw-899-docker-su-swarm](asw-899-docker-su-swarm/): rilascio di un'applicazione multi-servizi e multi-container sullo swarm *swarm.inf.uniroma3.it*
 -->
 
-<!---
-
 ## Progetti Kubernetes 
 
 
 * [asw-890-kubernetes](asw-890-kubernetes/): *orchestrazione* di container con *Kubernetes* 
+
+<!---
 
   nient'altro da escludere 
 -->

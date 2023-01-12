@@ -1,4 +1,4 @@
-package asw.rest.hello.domain;
+package asw.hello.domain;
 
 import org.springframework.stereotype.Service;
 

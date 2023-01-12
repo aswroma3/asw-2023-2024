@@ -1,6 +1,6 @@
-package asw.rest.hello.rest;
+package asw.hello.rest;
 
-import asw.rest.hello.domain.HelloService;
+import asw.hello.domain.HelloService;
 
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.GetMapping;

@@ -25,8 +25,8 @@ che vanno eseguite in degli opportuni *ambienti distribuiti*:
 
 ### Per la gestione degli ambienti di esecuzione  
 
-* [VirtualBox](https://www.virtualbox.org/)
-* [Vagrant](https://www.vagrantup.com/) 
+* [VirtualBox](https://www.virtualbox.org/) (usare la versione 6.1.70, perché la versione 7.0.XX non è ancora supportata da Vagrant) 
+* [Vagrant](https://www.vagrantup.com/) (versione 2.3.4)
 * [Git](https://git-scm.com/) 
 * opzionalmente [Docker](https://www.docker.com/), 
   che però non è strettamente necessario, poiché può essere eseguito nelle macchine virtuali. 

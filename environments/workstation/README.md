@@ -45,3 +45,8 @@ Hardware (virtuale)
 * Memoria: 2048 MB (2 GB) --> 4096 MB (4.0 GB) 
 
 * Virtual CPU: 2 --> 4 
+
+
+## Tempo di preparazione dell'ambiente 
+
+Tempo di primo provisioning dell'ambiente: circa 15-25 minuti 

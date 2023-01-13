@@ -3,7 +3,7 @@
 source "/home/asw/resources/common.sh"
 
 # set up Maven constants 
-MAVEN_VERSION=3.8.6
+MAVEN_VERSION=3.8.7
 
 MAVEN_ARCHIVE=apache-maven-${MAVEN_VERSION}-bin.zip
 # e.g., apache-maven-3.8.1-bin.zip
@@ -15,9 +15,9 @@ MAVEN_PATH=/usr/local/apache-maven-${MAVEN_VERSION}
 # e.g. /usr/local/apache-maven-3.8.1
 
 function installLocalMaven {
-	echo "================="
+	echo "================"
 	echo "installing maven"
-	echo "================="
+	echo "================"
 	FILE=${ASW_DOWNLOADS}/$MAVEN_ARCHIVE
 	unzip -q $FILE -d /usr/local
 }

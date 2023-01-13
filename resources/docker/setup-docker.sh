@@ -14,7 +14,8 @@ source "/home/asw/resources/common.sh"
 #DOCKER_VERSION=5:20.10.14~3-0~ubuntu-focal
 #DOCKER_VERSION=5:20.10.16~3-0~ubuntu-focal
 #DOCKER_VERSION=5:20.10.18~3-0~ubuntu-focal
-DOCKER_VERSION=5:20.10.21~3-0~ubuntu-focal
+#DOCKER_VERSION=5:20.10.21~3-0~ubuntu-focal
+DOCKER_VERSION=5:20.10.22~3-0~ubuntu-focal
 
 # Per vedere le versioni disponibili 
 # apt-cache madison docker-ce

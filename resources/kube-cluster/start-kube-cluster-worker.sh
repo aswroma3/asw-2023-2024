@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source "/home/asw/shared/scripts/common.sh"
+source "/home/asw/resources/common.sh"
 
 echo "==================================="
 echo "joining kubernetes cluster (worker)"

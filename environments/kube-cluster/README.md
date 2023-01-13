@@ -65,3 +65,9 @@ Hardware (virtuale)
 * Virtual CPU: 2 
 
 * CPU execution cap: 50% 
+
+
+## Tempo di preparazione dell'ambiente 
+
+Tempo di primo provisioning dell'ambiente: circa 35-45 minuti 
+

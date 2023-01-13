@@ -10,9 +10,9 @@ source "/home/asw/resources/common.sh"
 # see https://github.com/containernetworking/plugins/releases 
 # e.g. https://github.com/containernetworking/plugins/releases/download/v1.1.1/cni-plugins-linux-amd64-v1.1.1.tgz
 
+CONTAINERD_VERSION=1.6.15
 RUNC_VERSION=1.1.4
 CNI_VERSION=1.1.1
-CONTAINERD_VERSION=1.6.14
 
 echo "====================="
 echo "installing containerd"

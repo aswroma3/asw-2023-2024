@@ -31,7 +31,7 @@ KUBE_CLUSTER_NODES = [
         :ingressport => "31082",
         :memory => "2048",
         :cpus => "2", 
-        :cpuexecutioncap => "50" 
+        :cpuexecutioncap => "100" 
     },
     {
         :name => "kube-3",
@@ -42,7 +42,7 @@ KUBE_CLUSTER_NODES = [
         :ingressport => "31083",
         :memory => "2048",
         :cpus => "2", 
-        :cpuexecutioncap => "50" 
+        :cpuexecutioncap => "100" 
     },
     {
         :name => "kube-dev",
@@ -52,7 +52,7 @@ KUBE_CLUSTER_NODES = [
         :gocdport => "8153",
         :memory => "2048",
         :cpus => "2", 
-        :cpuexecutioncap => "50" 
+        :cpuexecutioncap => "100" 
     }
 ]
 
@@ -90,6 +90,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
             node.vm.network :private_network, ip: opts[:eth1], virtualbox__intnet: true
 
             node.vm.provider "virtualbox" do |v|
+				# v.gui = true   # solo per debug per problemi all'avvio 
                 v.name = opts[:name]
                 v.customize ["modifyvm", :id, "--memory", opts[:memory]]
                 v.customize ["modifyvm", :id, "--cpus", opts[:cpus]]

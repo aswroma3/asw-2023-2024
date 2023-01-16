@@ -25,7 +25,7 @@ che vanno eseguite in degli opportuni *ambienti distribuiti*:
 
 ### Software per la gestione degli ambienti di esecuzione  
 
-Ecco il software utilizzato dal docente per la gestione di ambienti di esecuzione con *Windows 11*. 
+Ecco il software utilizzato dal docente per la gestione degli ambienti di esecuzione con *Windows 11*. 
 
 * **IMPORTANTE**: tra le *Impostazioni* di *Windows 11*, cercare *Attiva o disattiva funzionalità di Windows* 
   (oppure *Attivazione o disattivazione delle funzionalità di Windows*)

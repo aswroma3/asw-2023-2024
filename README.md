@@ -23,15 +23,24 @@ che vanno eseguite in degli opportuni *ambienti distribuiti*:
 
 ## Software da installare sul proprio PC 
 
-### Per la gestione degli ambienti di esecuzione  
+### Software per la gestione degli ambienti di esecuzione  
 
-* [VirtualBox](https://www.virtualbox.org/) (usare la versione 6.1.70, perché la versione 7.0.XX non è ancora supportata da Vagrant) 
-* [Vagrant](https://www.vagrantup.com/) (versione 2.3.4)
+Ecco il software utilizzato dal docente per la gestione di ambienti di esecuzione con *Windows 11*. 
+
+* **IMPORTANTE**: tra le *Impostazioni* di *Windows 11*, cercare *Attiva o disattiva funzionalità di Windows* 
+  (oppure *Attivazione o disattivazione delle funzionalità di Windows*)
+  e disabilitare l'opzione *Piattaforma macchina virtuale* e *Hyper-V*, che crea problemi significativi con *VirtualBox*. 
+  (Anche l'opzione *Hyper-V* è incompatibile con *VirtualBox*.)
+
+* [VirtualBox](https://www.virtualbox.org/) 
+  * versione 7.0,4 
+* [Vagrant](https://www.vagrantup.com/) 
+  * versione 2.3.4
 * [Git](https://git-scm.com/) 
 * opzionalmente [Docker](https://www.docker.com/), 
   che però non è strettamente necessario, poiché può essere eseguito nelle macchine virtuali. 
 
-### Per lo sviluppo del software 
+### Software per lo sviluppo del software 
 
 Ecco il software opzionale per lo sviluppo del software (non è strettamente necessario, poiché può essere eseguito nelle macchine virtuali):
 * [Java SDK](http://www.oracle.com/technetwork/java/javase/) 

@@ -31,7 +31,7 @@ KUBE_CLUSTER_NODES = [
         :ingressport => "31082",
         :memory => "2048",
         :cpus => "2", 
-        :cpuexecutioncap => "100" 
+        :cpuexecutioncap => "50" 
     },
     {
         :name => "kube-3",
@@ -42,7 +42,7 @@ KUBE_CLUSTER_NODES = [
         :ingressport => "31083",
         :memory => "2048",
         :cpus => "2", 
-        :cpuexecutioncap => "100" 
+        :cpuexecutioncap => "50" 
     },
     {
         :name => "kube-dev",
@@ -52,7 +52,7 @@ KUBE_CLUSTER_NODES = [
         :gocdport => "8153",
         :memory => "2048",
         :cpus => "2", 
-        :cpuexecutioncap => "100" 
+        :cpuexecutioncap => "50" 
     }
 ]
 
@@ -80,21 +80,25 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     # folder per i dati condivisi per gli ambienti Asw (/home/asw/data) 
 	# da usare per eventuali volumi docker 
     # config.vm.synced_folder "../../data/", "/home/asw/data", :mount_options => ["dmode=777", "fmode=777"]
-
+	
     KUBE_CLUSTER_NODES.each do |opts|
         config.vm.define opts[:name] do |node|
 
             node.vm.box = opts[:box]
             # node.vm.box_version = opts[:box_version]
             node.vm.hostname = opts[:name]
-            node.vm.network :private_network, ip: opts[:eth1], virtualbox__intnet: true
-
+            node.vm.network "private_network", ip: opts[:eth1], virtualbox__intnet: true
+			
             node.vm.provider "virtualbox" do |v|
-				# v.gui = true   # solo per debug per problemi all'avvio 
                 v.name = opts[:name]
                 v.customize ["modifyvm", :id, "--memory", opts[:memory]]
                 v.customize ["modifyvm", :id, "--cpus", opts[:cpus]]
                 v.customize ["modifyvm", :id, "--cpuexecutioncap", opts[:cpuexecutioncap]]
+#                v.customize ["modifyvm", :id, "--nic1", "nat"]
+#                v.customize ["modifyvm", :id, "--nictype1", "82540EM"]
+#                v.customize ["modifyvm", :id, "--nic2", "intnet"]
+#                v.customize ["modifyvm", :id, "--nictype2", "82540EM"]
+#                v.customize ["modifyvm", :id, "--nictype2", "virtio"]				
             end
 
             node.vm.network "forwarded_port", guest: 22, host: 2211, id: 'ssh', auto_correct: true

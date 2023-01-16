@@ -49,4 +49,4 @@ Hardware (virtuale)
 
 ## Tempo di preparazione dell'ambiente 
 
-Tempo di primo provisioning dell'ambiente: circa 15-25 minuti 
+Tempo di primo provisioning dell'ambiente: circa 10-20 minuti 

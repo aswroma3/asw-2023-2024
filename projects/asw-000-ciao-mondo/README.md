@@ -5,7 +5,7 @@ che non è un'applicazione distribuita.
 
 ## Build  
 
-Per la costruzione dell'applicazione, nell'ambiente di esecuzione [developer](../../environments/developer/), sul nodo **dev**, 
+Per la costruzione dell'applicazione, nell'ambiente di esecuzione [workstation](../../environments/workstation/), sul nodo **workstation**, 
 vedere anche le istruzioni descritta nella sezione [projects/](../): 
 
 1. posizionarsi nella cartella principale dell'applicazione `asw-000-ciao-mondo` - 
@@ -22,7 +22,7 @@ che dopo la costruzione è presente nella cartella **build/libs** dell'applicazio
 ## Ambiente di esecuzione 
 
 L'applicazione **ciao-mondo** può essere eseguita direttamente nell'ambiente 
-[developer](../../environments/developer/), sul nodo **dev**. 
+[workstation](../../environments/workstation/), sul nodo **workstation**. 
 
 ## Esecuzione 
 

@@ -13,5 +13,5 @@ Sono proposti quattro progetti Docker:
 
 ### Ambiente di esecuzione 
 
-Questi container possono essere eseguiti nell'ambiente [workstation](../../environments/workstation/). 
+Questi container possono essere eseguiti nell'ambiente [workstation](../../environments/workstation/), sul nodo **workstation**. 
 

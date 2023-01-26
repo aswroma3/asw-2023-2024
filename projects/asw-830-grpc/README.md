@@ -32,7 +32,7 @@ Queste applicazioni sono tutte composte da due componenti eseguibili
 ### Ambiente di esecuzione 
 
 Ciascuna di queste applicazioni può essere eseguita direttamente sul proprio PC, 
-oppure nell'ambiente [developer](../../environments/developer/), sul nodo **dev**. 
+oppure nell'ambiente [workstation](../../environments/workstation/), sul nodo **workstation**. 
 Vanno però utilizzate due finestre (terminali) diverse: 
 una per il **server** e una per il **client**. 
 

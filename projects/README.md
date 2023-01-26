@@ -44,8 +44,8 @@ Per compilare un'applicazione sul proprio PC bisogna:
 
 In alternativa, è possibile compilare un'applicazione in una macchina virtuale:   
 
-1. collegarsi con `vagrant ssh` alla macchina virtuale **dev** 
-   dell'ambiente [developer](../environments/developer/), su cui sono installati *Java SDK* e *Gradle* 
+1. collegarsi con `vagrant ssh` alla macchina virtuale **workstation** 
+   dell'ambiente [workstation](../environments/workstation/), su cui sono installati *Java SDK* e *Gradle* 
 
 2. posizionarsi nella cartella principale dell'applicazione di interesse 
 

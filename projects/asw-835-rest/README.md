@@ -29,12 +29,12 @@ In pratica, per compilare e assemblare ciascuna applicazione, bisogna
 Queste applicazioni sono tutte composte da due componenti eseguibili (un componente server e un componente client). 
 Le applicazioni web possono essere accedute sulla porta **8080** dell'host, 
 sia se eseguite sul proprio PC che se vengono eseguite 
-nell'ambiente [developer](../../environments/developer/), sul nodo **dev**. 
+nell'ambiente [workstation](../../environments/workstation/), sul nodo **workstation**. 
 
 ### Ambiente di esecuzione 
 
 Ciascuna di queste applicazioni può essere eseguita direttamente sul proprio PC, 
-oppure nell'ambiente [developer](../../environments/developer/), sul nodo **dev**. 
+oppure nell'ambiente [workstation](../../environments/workstation/), sul nodo **workstation**. 
 Vanno però utilizzate due finestre (terminali) diverse: una per il **server** e una per il **client**. 
 
 ### Esecuzione 

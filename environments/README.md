@@ -35,7 +35,7 @@ Per gestire un ambiente bisogna:
 
 1. usare una shell (per esempio, Git) del proprio PC 
 
-2. posizionarsi nella cartella dell'ambiente di interesse (ad esempio, **asw/environments/developer**)
+2. posizionarsi nella cartella dell'ambiente di interesse (ad esempio, **asw/environments/workstation**)
 
 3. per avviare o creare l'ambiente di esecuzione, usare il comando `vagrant up` 
 
@@ -50,6 +50,7 @@ E' anche possibile:
 
 ## Ambienti 
 
+<!---
 * [developer](developer/):
   per la compilazione e l'assemblaggio (build) dei progetti definiti nella cartella [projects/](../projects/) del repository, 
   nonché per l'esecuzione di semplici applicazioni Java; 
@@ -62,7 +63,16 @@ E' anche possibile:
   (dunque richiede maggiori risorse nel computer host), 
   per consentire anche l'esecuzione concorrente di molteplici applicazioni; 
   oltre al software di sviluppo per *Java*, ha anche *Docker* e *Docker Compose* 
+--> 
 
+* [workstation](workstation/):
+  un ambiente per la compilazione e l'assemblaggio (build) dei progetti Java del repository, 
+  nonché per l'esecuzione di queste applicazioni Java, 
+  che consente anche l'esecuzione concorrente di molteplici applicazioni; 
+  oltre al software di sviluppo per *Java*, ha anche *Docker*; 
+  i progetti (in questo e anche negli altri ambienti) potranno essere trovati 
+  nella cartella **/home/asw/projects/** oppure nella cartella **projects/** dell'utente di default
+  
 * [kube-cluster](kube-cluster/):
   un ambiente costituito da un cluster di nodi *Kubernetes* (*kube-1*, *kube-2* e *kube-3*)
   più un nodo per la compilazione dei progetti e per la costruzione delle immagini dei container *Docker*; 

@@ -41,13 +41,16 @@ A tal fine, io ho utilizzato la seguente configurazione di *Windows 11*:
     (oppure *Attivazione o disattivazione delle funzionalità di Windows*)
     e disabilitare le opzioni *Piattaforma macchina virtuale*, *Piattaforma Windows Hypervisor* e *Hyper-V* 
   * riavviare il computer 
-* disabilitazione di *Virtualization Based Security* (**attenzione: questo migliora le prestazioni di VirtualBox, ma peggiore la sicurezza del sistema**): 
+* disabilitazione della *Virtualization Based Security* (*VBS*) (**attenzione: questo migliora le prestazioni di VirtualBox, ma peggiore la sicurezza del sistema**): 
+  * per verificare se la VBS è attiva o meno, usare il comando *System Information* di Windows 
+    e guardare se la voce *Sicurezza basata sulla virtualizzazione* è abilitata o meno (se non è abilitata allora non serve fare quanto segue)
   * con l'*Editor del Registro di Sistema* cercare la voce 
     *Computer\HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\DeviceGuard* 
-	ed impostare il valore di *EnableVirtualizationBasedSecurity* a *0*  
+	e cambiare il valore di *EnableVirtualizationBasedSecurity* da *1* a *0*  
   * tra le *Impostazioni* di *Windows 11*, cercare *Privacy e Sicurezza*, *Sicurezza di Windows*, *Sicurezza dispositivi*, *Isolamento Core* 
     e disabilitare le opzioni *Integrità della memoria* e *Protezione del firmware* 
   * riavviare il computer 
+  * (si noti che è possibile riabilitare la VBS effettuando le modifiche inverse)
 
 ### Software per lo sviluppo del software 
 

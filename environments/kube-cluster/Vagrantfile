@@ -89,6 +89,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
             node.vm.hostname = opts[:name]
             node.vm.network "private_network", ip: opts[:eth1], virtualbox__intnet: true
 			
+			node.vm.boot_timeout = 600
+			
             node.vm.provider "virtualbox" do |v|
                 v.name = opts[:name]
                 v.customize ["modifyvm", :id, "--memory", opts[:memory]]
@@ -194,7 +196,12 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 				end 
 				node.vm.provision :shell, :inline => ASW_RESOURCES + "kube-cluster/setup-helm.sh"
             end
-
+			
+			node.vm.provision "shell" do |s| 
+				s.inline = ASW_RESOURCES + "done.sh $1"
+				s.args = [ opts[:name] ]
+			end 
+			
         end
 
     end

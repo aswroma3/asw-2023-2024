@@ -44,10 +44,12 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
         node.vm.hostname = "workstation"    
         node.vm.network "private_network", ip: "10.11.1.121", virtualbox__intnet: true
 
-		# queste risorse consentono di lanciare piu' contenitori Docker e piu' applicazioni Spring 
         node.vm.provider "virtualbox" do |v| 
+            # queste risorse bastano nei casi piu' semplici 
+			# v.memory = 2048
+			# v.cpus = 2
+			# queste risorse consentono anche di lanciare piu' applicazioni Spring e anche piu' contenitori Docker
             v.memory = 4096 
-            # v.memory = 6144 
             v.cpus = 4
         end 
 

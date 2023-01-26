@@ -25,20 +25,31 @@ che vanno eseguite in degli opportuni *ambienti distribuiti*:
 
 ### Software per la gestione degli ambienti di esecuzione  
 
-Ecco il software utilizzato dal docente per la gestione degli ambienti di esecuzione con *Windows 11*. 
-
-* **IMPORTANTE**: tra le *Impostazioni* di *Windows 11*, cercare *Attiva o disattiva funzionalità di Windows* 
-  (oppure *Attivazione o disattivazione delle funzionalità di Windows*)
-  e disabilitare l'opzione *Piattaforma macchina virtuale* e *Hyper-V*, che crea problemi significativi con *VirtualBox*. 
-  (Anche l'opzione *Hyper-V* è incompatibile con *VirtualBox*.)
+Ecco il software utilizzato dal docente per la gestione degli ambienti di esecuzione con *Windows 11 Pro (versione 22H2)*. 
 
 * [VirtualBox](https://www.virtualbox.org/) 
-  * versione 7.0,4 
+  * versione 7.0.6
 * [Vagrant](https://www.vagrantup.com/) 
   * versione 2.3.4
 * [Git](https://git-scm.com/) 
 * opzionalmente [Docker](https://www.docker.com/), 
   che però non è strettamente necessario, poiché può essere eseguito nelle macchine virtuali. 
+
+E' importante osservare che VirtualBox potrebbe non essere compatibile con Hyper-V di Microsoft, 
+e potrebbe avere un rallentamento significativo dalla Virtualization Based Security di Windows 11. 
+A tal fine, io ho utilizzato la seguente configurazione di *Windows 11*: 
+* disabilitazione di *Hyper-V*: 
+  * tra le *Impostazioni* di *Windows 11*, cercare *Attiva o disattiva funzionalità di Windows* 
+    (oppure *Attivazione o disattivazione delle funzionalità di Windows*)
+    e disabilitare le opzioni *Piattaforma macchina virtuale*, *Piattaforma Windows Hypervisor* e *Hyper-V* 
+  * riavviare il computer 
+* disabilitazione di *Virtualization Based Security* (**attenzione: questo migliora le prestazioni di VirtualBox, ma peggiore la sicurezza del sistema**): 
+  * con l'*Editor del Registro di Sistema* cercare la voce 
+    *Computer\HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\DeviceGuard* 
+	ed impostare il valore di *EnableVirtualizationBasedSecurity* a *0*  
+  * tra le *Impostazioni* di *Windows 11*, cercare *Privacy e Sicurezza*, *Sicurezza di Windows*, *Sicurezza dispositivi*, *Isolamento Core* 
+    e disabilitare le opzioni *Integrità della memoria* e *Protezione del firmware* 
+  * riavviare il computer 
 
 ### Software per lo sviluppo del software 
 

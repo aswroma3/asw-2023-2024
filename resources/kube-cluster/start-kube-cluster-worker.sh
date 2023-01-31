@@ -9,8 +9,8 @@ echo "==================================="
 # copia i file di configurazione da usare negli altri nodi con scp 
 # see https://medium.com/@wso2tech/multi-node-kubernetes-cluster-with-vagrant-virtualbox-and-kubeadm-9d3eaac28b98 (punto 13) 
 
-KUBE_CLUSTER_JOIN_CMD_FILE=/home/vagrant/kube_cluster_join_cmd.sh
-LOCAL_JOIN_CMD_FILE=kube_cluster_join_cmd.sh
+KUBE_CLUSTER_JOIN_CMD_FILE=/home/vagrant/kube-cluster/kube_cluster_join_cmd.sh
+LOCAL_JOIN_CMD_FILE=/home/vagrant/kube_cluster_join_cmd.sh
 
 # KUBE_CLUSTER_MASTER_IP=10.11.1.71
 KUBE_CLUSTER_MASTER_IP=$1

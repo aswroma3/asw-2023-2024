@@ -6,7 +6,6 @@ echo "===================================="
 
 # https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/
 
-
 # installing kubeadm, kubelet and kubectl
 
 apt-get update && sudo apt-get install -y apt-transport-https ca-certificates curl

@@ -13,6 +13,10 @@ echo "======================================================="
 echo "installing kubernetes nginx ingress controller (master)"
 echo "======================================================="
 
+NGINX_INGRESS_FOLDER=/home/vagrant/kube-cluster/nginx-ingress
+
+mkdir -p ${NGINX_INGRESS_FOLDER}
+
 # https://docs.nginx.com/nginx-ingress-controller/installation/installation-with-manifests/ 
 
 # attenzione: usare una versione specifica e non usare il branch "main"
@@ -31,7 +35,6 @@ kubectl apply -f ${GITHUB_URL}common/ingress-class.yaml
 #		> /etc/kube-cluster/ingress-class.yaml
 #kubectl apply -f /etc/kube-cluster/ingress-class.yaml
 
-
 kubectl apply -f ${GITHUB_URL}common/crds/k8s.nginx.org_virtualservers.yaml
 kubectl apply -f ${GITHUB_URL}common/crds/k8s.nginx.org_virtualserverroutes.yaml
 kubectl apply -f ${GITHUB_URL}common/crds/k8s.nginx.org_transportservers.yaml
@@ -42,25 +45,14 @@ kubectl apply -f ${GITHUB_URL}common/crds/k8s.nginx.org_globalconfigurations.yam
 kubectl apply -f ${GITHUB_URL}deployment/nginx-ingress.yaml
 # kubectl apply -f ${GITHUB_URL}daemon-set/nginx-ingress.yaml
 
-#curl -s -L ${GITHUB_URL}deployment/nginx-ingress.yaml \
-#        | sed 's/containerPort: 80$/containerPort: 31080/g' \
-#        | sed 's/containerPort: 443$/containerPort: 31443/g' \
-#		> /etc/kube-cluster/nginx-ingress.yaml
-#kubectl apply -f /etc/kube-cluster/nginx-ingress.yaml
-
-kubectl create -f ${GITHUB_URL}service/nodeport.yaml
+# kubectl create -f ${GITHUB_URL}service/nodeport.yaml
 
 curl -s -L ${GITHUB_URL}service/nodeport.yaml \
-        | sed 's/targetPort: 80$/&\n    nodePort: 80/' \
-        | sed 's/targetPort: 443$/&\n    nodePort: 443/' \
-		> /etc/kube-cluster/nodeport.yaml
-
-curl -s -L https://raw.githubusercontent.com/nginxinc/kubernetes-ingress/v2.4.2/deployments/service/nodeport.yaml \
         | sed 's/targetPort: 80$/&\n    nodePort: 31080/' \
         | sed 's/targetPort: 443$/&\n    nodePort: 31443/' \
-		> /etc/kube-cluster/nodeport.yaml
+		> ${NGINX_INGRESS_FOLDER}/nodeport.yaml
 
-kubectl apply -f /etc/kube-cluster/nodeport.yaml
+kubectl apply -f ${NGINX_INGRESS_FOLDER}/nodeport.yaml
 
 # test: 
 # kubectl get pods --namespace=nginx-ingress (il controller deve essere Running)
@@ -68,4 +60,3 @@ kubectl apply -f /etc/kube-cluster/nodeport.yaml
 
 # uninstall: 
 # kubectl delete namespace nginx-ingress
-

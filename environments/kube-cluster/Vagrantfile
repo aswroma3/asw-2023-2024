@@ -96,11 +96,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
                 v.customize ["modifyvm", :id, "--memory", opts[:memory]]
                 v.customize ["modifyvm", :id, "--cpus", opts[:cpus]]
                 v.customize ["modifyvm", :id, "--cpuexecutioncap", opts[:cpuexecutioncap]]
-#                v.customize ["modifyvm", :id, "--nic1", "nat"]
-#                v.customize ["modifyvm", :id, "--nictype1", "82540EM"]
-#                v.customize ["modifyvm", :id, "--nic2", "intnet"]
-#                v.customize ["modifyvm", :id, "--nictype2", "82540EM"]
-#                v.customize ["modifyvm", :id, "--nictype2", "virtio"]				
             end
 
             node.vm.network "forwarded_port", guest: 22, host: 2211, id: 'ssh', auto_correct: true
@@ -152,44 +147,39 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 			# kubernetes 
 			#
             if opts[:type] == "master"
-				# node.vm.provision :shell, :inline => ASW_RESOURCES + "kube-cluster/configure-kube-cluster-hosts.sh"
 				node.vm.provision "shell" do |s| 
 					s.inline = ASW_RESOURCES + "kube-cluster/configure-kube-cluster-hosts.sh $1 $2 $3 $4"
 					s.args = ["10.11.1.70", "kube-cluster", "kube-", 3]
 				end 
 				node.vm.provision :shell, :inline => ASW_RESOURCES + "kube-cluster/setup-kubernetes-kubeadm.sh"
-                # node.vm.provision :shell, :inline => ASW_RESOURCES + "kube-cluster/start-kube-cluster-master.sh " + POD_NETWORK_CIDR
 				node.vm.provision "shell" do |s| 
 					s.inline = ASW_RESOURCES + "kube-cluster/start-kube-cluster-master.sh $1"
 					s.args = [POD_NETWORK_CIDR]
 				end 
-                # node.vm.provision :shell, :inline => ASW_RESOURCES + "kube-cluster/setup-kube-cluster-calico-network-addon.sh " + POD_NETWORK_CIDR
-				node.vm.provision "shell" do |s| 
+				node.vm.provision :shell, :inline => ASW_RESOURCES + "kube-cluster/setup-helm.sh"
+ 				node.vm.provision "shell" do |s| 
 					s.inline = ASW_RESOURCES + "kube-cluster/setup-kube-cluster-calico-network-addon.sh $1"
 					s.args = [POD_NETWORK_CIDR]
 				end 
                 node.vm.provision :shell, :inline => ASW_RESOURCES + "kube-cluster/setup-kube-cluster-ingress-nginx-addon.sh"
+				# in alternativa: 
                 # node.vm.provision :shell, :inline => ASW_RESOURCES + "kube-cluster/setup-kube-cluster-nginx-ingress-addon.sh"
             elsif opts[:type] == "worker"
-				# node.vm.provision :shell, :inline => ASW_RESOURCES + "kube-cluster/configure-kube-cluster-hosts.sh"
 				node.vm.provision "shell" do |s| 
 					s.inline = ASW_RESOURCES + "kube-cluster/configure-kube-cluster-hosts.sh $1 $2 $3 $4"
 					s.args = ["10.11.1.70", "kube-cluster", "kube-", 3]
 				end 
 				node.vm.provision :shell, :inline => ASW_RESOURCES + "kube-cluster/setup-kubernetes-kubeadm.sh"
-                # node.vm.provision :shell, :inline => ASW_RESOURCES + "kube-cluster/start-kube-cluster-worker.sh " + KUBE_CLUSTER_MASTER_IP
 				node.vm.provision "shell" do |s| 
 					s.inline = ASW_RESOURCES + "kube-cluster/start-kube-cluster-worker.sh $1"
 					s.args = [KUBE_CLUSTER_MASTER_IP]
 				end 
             else # opts[:type] == "dev" 
-				# node.vm.provision :shell, :inline => ASW_RESOURCES + "kube-cluster/configure-kube-cluster-dev-hosts.sh"
 				node.vm.provision "shell" do |s| 
 					s.inline = ASW_RESOURCES + "kube-cluster/configure-kube-cluster-dev-hosts.sh $1 $2 $3 $4"
 					s.args = ["10.11.1.70", "kube-cluster", "kube-", 3]
 				end 
 				node.vm.provision :shell, :inline => ASW_RESOURCES + "kube-cluster/setup-kubernetes-kubeadm-client.sh"
-                # node.vm.provision :shell, :inline => ASW_RESOURCES + "kube-cluster/configure-kube-cluster-client.sh " + KUBE_CLUSTER_MASTER_IP
 				node.vm.provision "shell" do |s| 
 					s.inline = ASW_RESOURCES + "kube-cluster/configure-kube-cluster-client.sh $1"
 					s.args = [KUBE_CLUSTER_MASTER_IP]

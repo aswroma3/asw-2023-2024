@@ -13,19 +13,20 @@ echo "======================================================="
 echo "installing kubernetes nginx ingress controller (master)"
 echo "======================================================="
 
+INGRESS_NGINX_FOLDER=/home/vagrant/kube-cluster/ingress-nginx
+
+mkdir -p ${INGRESS_NGINX_FOLDER}
 
 # kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.5.1/deploy/static/provider/cloud/deploy.yaml
 
 # modifica il file di configurazione in modo che la porta per http/https dell'ingress siano fissate su 31080/31443 
 
-mkdir -p /etc/kube-cluster
-
 curl -s -L https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.5.1/deploy/static/provider/baremetal/deploy.yaml \
         | sed 's/targetPort: http$/&\n    nodePort: 31080/' \
         | sed 's/targetPort: https$/&\n    nodePort: 31443/' \
-		> /etc/kube-cluster/ingress-nginx-nodeport-deploy.yaml
+		> ${INGRESS_NGINX_FOLDER}/ingress-nginx-nodeport-deploy.yaml
 
-kubectl apply -f /etc/kube-cluster/ingress-nginx-nodeport-deploy.yaml
+kubectl apply -f ${INGRESS_NGINX_FOLDER}/ingress-nginx-nodeport-deploy.yaml
 
 # test: 
 # kubectl get pods --namespace=ingress-nginx (il controller deve essere Running)
@@ -33,4 +34,3 @@ kubectl apply -f /etc/kube-cluster/ingress-nginx-nodeport-deploy.yaml
 
 # uninstall: 
 # kubectl delete namespace ingress-nginx
-

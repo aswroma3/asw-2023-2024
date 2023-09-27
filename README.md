@@ -1,10 +1,10 @@
-# Architettura dei Sistemi Software a Roma Tre (2022-2023)
+# Architettura dei Sistemi Software a Roma Tre (2023-2024)
 
 Benvenuti al repository del corso 
-di [Architettura dei Sistemi Software](http://cabibbo.dia.uniroma3.it/asw/) 
+di [Architettura dei Sistemi Software](http://cabibbo.inf.uniroma3.it/asw/) 
 a Roma Tre, 
-edizione 2022-2023 (A.A. 2022-2023), 
-tenuto dal prof. [Luca Cabibbo](http://cabibbo.dia.uniroma3.it/). 
+edizione 2023-2024 (A.A. 2023-2024), 
+tenuto dal prof. [Luca Cabibbo](http://cabibbo.inf.uniroma3.it/). 
 
 Questo è invece il link alla [precedente edizione completa del repository](https://github.com/aswroma3/asw-2022). 
 

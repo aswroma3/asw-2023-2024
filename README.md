@@ -6,10 +6,10 @@ a Roma Tre,
 edizione 2023-2024 (A.A. 2023-2024), 
 tenuto dal prof. [Luca Cabibbo](http://cabibbo.inf.uniroma3.it/). 
 
-Questo è invece il link alla [precedente edizione completa del repository](https://github.com/aswroma3/asw-2022). 
+Per la versione del repository relativa alla precedente edizione del corso, si faccia invece riferimento al branch **asw-2022-2023**. 
 
 Questo repository contiene il codice delle *esercitazioni* 
-del corso di [Architettura dei Sistemi Software](http://cabibbo.dia.uniroma3.it/asw/), 
+del corso di [Architettura dei Sistemi Software](http://cabibbo.inf.uniroma3.it/asw/), 
 che sono relative a delle semplici *applicazioni software distribuite* 
 (basate sull'uso di *middleware*), 
 che vanno eseguite in degli opportuni *ambienti distribuiti*: 
@@ -27,14 +27,14 @@ che vanno eseguite in degli opportuni *ambienti distribuiti*:
 
 Ecco il software utilizzato dal docente per la gestione degli ambienti di esecuzione con *Windows 11 Pro (versione 22H2)*. 
 
-* [VirtualBox](https://www.virtualbox.org/), versione 7.0.6
-* [Vagrant](https://www.vagrantup.com/), versione 2.3.4
+* [VirtualBox](https://www.virtualbox.org/), versione 7.0.10
+* [Vagrant](https://www.vagrantup.com/), versione 2.3.7
 * [Git](https://git-scm.com/) 
 * opzionalmente [Docker](https://www.docker.com/), 
   che però non è strettamente necessario, poiché può essere eseguito nelle macchine virtuali. 
 
 E' importante osservare che VirtualBox potrebbe non essere compatibile con Hyper-V di Microsoft, 
-e potrebbe avere un rallentamento significativo dalla Virtualization Based Security di Windows 11. 
+ed inoltre potrebbe avere un rallentamento significativo dalla Virtualization Based Security di Windows 11. 
 A tal fine, io ho utilizzato la seguente configurazione di *Windows 11*: 
 * disabilitazione di *Hyper-V*: 
   * tra le *Impostazioni* di *Windows 11*, cercare *Attiva o disattiva funzionalità di Windows* 
@@ -55,8 +55,8 @@ A tal fine, io ho utilizzato la seguente configurazione di *Windows 11*:
 ### Software per lo sviluppo del software 
 
 Ecco il software opzionale per lo sviluppo del software (non è strettamente necessario, poiché può essere eseguito nelle macchine virtuali):
-* [Java SDK](http://www.oracle.com/technetwork/java/javase/) 
-* [Gradle](http://gradle.org/) 
+* [OpenJDK](https://openjdk.org/), versione 17  
+* [Gradle](http://gradle.org/), versione 8.3 
 
 ## Organizzazione del repository 
 
@@ -66,16 +66,13 @@ Questo repository è organizzato in diverse sezioni (cartelle):
 * [environments](environments/) contiene il codice per la gestione degli *ambienti distribuiti*, 
   con una sottosezione (sottocartella) per ciascuno degli ambienti distribuiti 
   su cui poter eseguire le applicazioni distribuite sviluppate; 
-* [shared](shared/) contiene ulteriori risorse condivise per la gestione degli *ambienti distribuiti*. 
+* [resources](resources/) contiene ulteriori risorse condivise per la gestione degli *ambienti distribuiti*. 
 
 Queste sezioni non sono indipendenti, ma correlate (in modo non banale). 
-<!---
-Per esempio, il progetto **hello-rmi** (in [projects](projects/))
-va eseguito nell'ambiente **client-server** (in [environments](environments/)). 
--->
 
-Attualmente non sono presenti tutti i progetti e nemmeno tutti gli ambienti. 
-Verranno aggiunti a questo repository durante lo svolgimento del corso. 
+Attualmente sono presenti tutti i progetti e tutti gli ambienti, 
+**ma alcuni di questi potrebbero ancora riferirsi alla precedente edizione del corso**. 
+Durante lo svolgimento del corso tutti i progetti e tutti gli ambienti verranno aggiornati, in modo incrementale. 
 
 ## Accesso al repository 
 

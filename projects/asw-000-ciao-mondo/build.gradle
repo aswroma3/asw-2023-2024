@@ -23,10 +23,12 @@ dependencies {
 }
 
 // Define the main class for the application
-mainClassName = 'asw.ciaomondo.CiaoMondo'
-
+application { 
+	mainClass = 'asw.ciaomondo.CiaoMondo'
+}
+	
 jar {
     manifest {
-        attributes 'Main-Class': mainClassName
+        attributes 'Main-Class': application.mainClass
     }
 }

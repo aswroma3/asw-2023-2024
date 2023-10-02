@@ -18,7 +18,7 @@ E' composto da una sola macchina virtuale **workstation**.
 
 La macchina virtuale **workstation** ha il seguente software 
 
-* Ubuntu 20.04 LTS a 64 bit (by Bento) 
+* Ubuntu 22.04 LTS a 64 bit (by Bento) 
 
 * Java SDK (Open JDK)
   
@@ -26,9 +26,7 @@ La macchina virtuale **workstation** ha il seguente software
 
 * Apache Maven 
 
-* Docker 
-
-* Docker Compose 
+* Docker e Docker Compose 
 
 Configurazione di rete 
 
@@ -46,4 +44,4 @@ Hardware (virtuale)
 
 ## Tempo di preparazione dell'ambiente 
 
-Tempo di primo provisioning dell'ambiente: circa 10-20 minuti 
+Tempo di primo provisioning dell'ambiente: circa 8-20 minuti 

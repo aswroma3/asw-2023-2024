@@ -1,4 +1,4 @@
-Quest'anno Gradle mi dà saltuariamente problemi di questo tipo: 
+Quest'anno (2022-2023) Gradle mi dà saltuariamente problemi di questo tipo: 
 
 FAILURE: Build failed with an exception.
 
@@ -16,19 +16,8 @@ MOTIVO?
 Sospetto che sia legato al passaggio da una major version di Gradle alla successiva. 
 
 CHE FARE? 
+***********************************************************************************************
 Mi sembra sufficiente cancellare la precedente cartella .gradle all'interno di ciascun progetto 
+***********************************************************************************************
 
-Ecco un'altra potenziale soluzione: 
-https://discuss.gradle.org/t/could-not-create-service-of-type-outputfilesrepository-using-executiongradleservices-createoutputfilesrepository/32770
-
-ps -edalf | grep gradle
-oppure 
-ps -edalf | grep gradle | grep -v grep 
-
-e poi
-kill {gradle process id}
-
-oppure 
-gradle --status mostra i demoni attivi 
-gradle --stop uccide i demoni attivi
 

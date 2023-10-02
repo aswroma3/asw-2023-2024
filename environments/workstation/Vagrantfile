@@ -19,8 +19,8 @@ Encoding.default_internal = Encoding.find('Windows-1250')
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     # Configurazioni comuni.
 
-    # Ubuntu 20.04 LTS 64 bit VirtualBox (Bento)
-    config.vm.box = "bento/ubuntu-20.04"
+    # Ubuntu 22.04 LTS 64 bit VirtualBox (Bento)
+    config.vm.box = "bento/ubuntu-22.04"
 
     # folder per i progetti Asw (/home/asw/projects)
     config.vm.synced_folder "../../projects/", "/home/asw/projects", :mount_options => ["dmode=777", "fmode=777"]

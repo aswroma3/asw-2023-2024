@@ -38,9 +38,11 @@ project(':server') {
     }
 
     apply plugin: 'application' 
-    mainClassName = "asw.intro.server.Server"
-	applicationDefaultJvmArgs = ["-Djava.util.logging.config.file=build/resources/main/logging.properties"]
-      
+	application { 
+		mainClass = 'asw.intro.server.Server'
+		applicationDefaultJvmArgs = ['-Djava.util.logging.config.file=build/resources/main/logging.properties']
+	}
+   
 }
 
 project(':client') {
@@ -57,8 +59,10 @@ project(':client') {
     }
 
     apply plugin: 'application' 
-    mainClassName = "asw.intro.client.Main"
-	applicationDefaultJvmArgs = ["-Djava.util.logging.config.file=build/resources/main/logging.properties"]
- 
+	application { 
+		mainClass = 'asw.intro.client.Main'
+		applicationDefaultJvmArgs = ['-Djava.util.logging.config.file=build/resources/main/logging.properties']
+	}
+
 }
 

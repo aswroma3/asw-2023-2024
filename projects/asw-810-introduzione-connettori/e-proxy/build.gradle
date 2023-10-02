@@ -16,13 +16,15 @@ dependencies {
     testImplementation 'junit:junit:4.12'
 }
 
-apply plugin: 'application'     
-mainClassName = "asw.intro.main.Main"
-applicationDefaultJvmArgs = ["-Djava.util.logging.config.file=build/resources/main/logging.properties"]
+apply plugin: 'application'
+application { 
+	mainClass = 'asw.intro.main.Main'
+	applicationDefaultJvmArgs = ['-Djava.util.logging.config.file=build/resources/main/logging.properties']
+}
 
 jar {
     manifest {
-        attributes 'Main-Class': mainClassName
+        attributes 'Main-Class': application.mainClass
     }
 }
 

@@ -36,23 +36,31 @@ project(':server') {
         implementation project(':service-impl')
     }
 
+    apply plugin: 'application' 
+	application { 
+		mainClass = 'asw.socket.server.Server'
+		applicationDefaultJvmArgs = ['-Djava.util.logging.config.file=build/resources/main/logging.properties']
+	}
+
     jar {
         manifest {
             attributes 'Main-Class': 'asw.socket.server.Server'
             attributes 'Class-Path': 'service.jar service-impl.jar' 
         }
     }
-
-    apply plugin: 'application' 
-    mainClassName = "asw.socket.server.Server"
-	applicationDefaultJvmArgs = ["-Djava.util.logging.config.file=build/resources/main/logging.properties"]
-      
+     
 }
 
 project(':client') {
     dependencies {
         implementation project(':service')
     }
+
+    apply plugin: 'application' 
+	application { 
+		mainClass = 'asw.socket.main.Main'
+		applicationDefaultJvmArgs = ['-Djava.util.logging.config.file=build/resources/main/logging.properties']
+	}
 
     jar {
         manifest {
@@ -61,9 +69,5 @@ project(':client') {
         }
     }
 
-    apply plugin: 'application' 
-    mainClassName = "asw.socket.main.Main"
-	applicationDefaultJvmArgs = ["-Djava.util.logging.config.file=build/resources/main/logging.properties"]
-  
 }
 

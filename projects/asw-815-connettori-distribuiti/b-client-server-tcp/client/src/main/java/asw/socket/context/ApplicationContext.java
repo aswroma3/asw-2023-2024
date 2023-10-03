@@ -16,7 +16,7 @@ public class ApplicationContext {
 
 	/* posizione del server */
 	private static String SERVER_ADDRESS = "localhost";
-	// private static String SERVER_ADDRESS = "10.11.1.111";
+	// private static String SERVER_ADDRESS = "10.11.1.121";
 
 	/* porta del server */
 	private static int SERVER_PORT = 7896;

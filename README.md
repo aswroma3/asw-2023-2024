@@ -56,7 +56,7 @@ A tal fine, io ho utilizzato la seguente configurazione di *Windows 11*:
 
 Ecco il software opzionale per lo sviluppo del software (non è strettamente necessario, poiché può essere eseguito nelle macchine virtuali):
 * [OpenJDK](https://openjdk.org/), versione 17  
-* [Gradle](http://gradle.org/), versione 8.3 
+* [Gradle](http://gradle.org/), versione 8.4 
 
 ## Organizzazione del repository 
 

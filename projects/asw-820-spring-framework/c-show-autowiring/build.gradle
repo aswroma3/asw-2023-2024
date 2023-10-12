@@ -8,20 +8,24 @@
  */ 
  
 apply plugin: 'java'
-sourceCompatibility = '11'
+java {
+	sourceCompatibility = JavaVersion.VERSION_17
+}
 
 repositories {
     mavenCentral()
 }
 
-apply plugin: 'application'     
-mainClassName = "asw.spring.show.Main"
+apply plugin: 'application'
+application { 
+	mainClass = 'asw.spring.show.Main'
+}
 
 dependencies {
-    implementation 'org.springframework:spring-context:5.3.23'
-	testImplementation 'org.springframework:spring-test:5.3.23'	
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.9.1'
-	testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.9.1'
+    implementation 'org.springframework:spring-context:6.0.12'
+	testImplementation 'org.springframework:spring-test:6.0.12'	
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.10.0'
+	testRuntimeOnly('org.junit.platform:junit-platform-launcher')
 }
 
 test {

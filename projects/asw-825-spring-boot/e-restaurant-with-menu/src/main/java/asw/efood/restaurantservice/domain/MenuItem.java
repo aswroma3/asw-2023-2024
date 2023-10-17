@@ -1,6 +1,6 @@
 package asw.efood.restaurantservice.domain;
 
-import javax.persistence.*; 
+import jakarta.persistence.*; 
 
 import lombok.*; 
 

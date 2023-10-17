@@ -13,11 +13,13 @@ che esemplificano l'uso di [Spring Boot](https://spring.io/projects/spring-boot)
 
 * **e-restaurant-with-menu** estende l'applicazione precedente con la gestione dei menu dei ristoranti 
 
-* **f-restaurant-actuator** esemplifica l'uso di Spring Boot Actuator 
+* **f-restaurant-postgresql** esemplifica l'uso PostgreSQL con Spring Boot  
 
-* **g-lucky-word-properties** esemplifica l'uso delle proprietà per la configurazione delle applicazioni 
+* **g-restaurant-actuator** esemplifica l'uso di Spring Boot Actuator 
 
-* **h-lucky-word-profiles** esemplifica l'uso dei profili per la configurazione delle applicazioni
+* **h-lucky-word-properties** esemplifica l'uso delle proprietà per la configurazione delle applicazioni 
+
+* **i-lucky-word-profiles** esemplifica l'uso dei profili per la configurazione delle applicazioni
 
 Le diverse applicazioni hanno una struttura simile, 
 e la loro costruzione ed esecuzione è descritta qui di seguito. 
@@ -50,15 +52,26 @@ vengono pubblicate sulla porta **8080** dell'host.
 ### Esecuzione 
 
 Per eseguire un'applicazione (ad eccezione delle applicazioni 
-**g-lucky-word-properties** e **h-lucky-word-profiles**, descritte più avanti): 
+**f-restaurant-postgresql**, **h-lucky-word-properties** e **i-lucky-word-profiles**, descritte più avanti): 
 
 1. posizionarsi nella cartella principale dell'applicazione di interesse - ad esempio `~/projects/asw-825-spring-boot/a-hello`
 
 2. eseguire il comando `gradle bootRun` (attenzione, bisogna usare il task `bootRun` di Gradle, e non il task `run`)
 
-#### Esecuzione dell'applicazione **g-lucky-word-properties** 
+#### Esecuzione dell'applicazione **f-restaurant-postgresql** 
 
-Posizionarsi nella cartella principale dell'applicazione, `~/projects/asw-825-spring-boot/g-lucky-word-properties` e poi: 
+Posizionarsi nella cartella principale dell'applicazione, `~/projects/asw-825-spring-boot/f-restaurant-postgresql` e poi: 
+
+* avviare PostgreSQL eseguendo lo script `../start-postgres.sh` 
+
+* avviare l'applicazione eseguendo il comando `gradle bootRun` 
+
+* dopo l'esecuzione dell'applicazione, arrestare PostgreSQL eseguendo lo script `../stop-postgres.sh` 
+
+
+#### Esecuzione dell'applicazione **h-lucky-word-properties** 
+
+Posizionarsi nella cartella principale dell'applicazione, `~/projects/asw-825-spring-boot/h-lucky-word-properties` e poi: 
 
 * eseguire lo script `../run-with-default-property.sh` (oppure il comando `gradle bootRun`) 
   per avviare il servizio usando la parola fortunata di default (la parola fortunata è *Default*)
@@ -69,9 +82,9 @@ Posizionarsi nella cartella principale dell'applicazione, `~/projects/asw-825-sp
 * eseguire lo script `../run-with-env-variable.sh` (oppure il comando `LUCKY_WORD="Environment variable" gradle bootRun`)
   per avviare il servizio passando la parola fortunata mediante una variabile d'ambiente (la parola fortunata è *Environment variable*)
 
-#### Esecuzione dell'applicazione **h-lucky-word-profiles** 
+#### Esecuzione dell'applicazione **i-lucky-word-profiles** 
 
-Posizionarsi nella cartella principale dell'applicazione, `~/projects/asw-825-spring-boot/h-lucky-word-profiles` e poi: 
+Posizionarsi nella cartella principale dell'applicazione, `~/projects/asw-825-spring-boot/i-lucky-word-profiles` e poi: 
 
 * eseguire lo script `../run-as-default.sh` (oppure il comando `gradle bootRun`)
   per avviare il servizio usando il profilo di default (la parola fortunata è *Default*)

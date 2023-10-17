@@ -8,7 +8,7 @@ import java.util.logging.Logger;
 @Component
 public class HelloRunner implements CommandLineRunner {
 
-	private static final Logger logger = Logger.getLogger(this.getClass().toString()); 
+	private final Logger logger = Logger.getLogger(this.getClass().toString()); 
 
 	public void run(String[] args) {
 		logger.info("Hello, world!"); 

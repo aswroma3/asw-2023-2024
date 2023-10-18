@@ -8,5 +8,5 @@ server:
 
 asw.sentence: 
   wordservice: 
-#    words: Spring Cloud Config,Spring Cloud Config
-    words: SPRING CLOUD CONFIG,SPRING CLOUD CONFIG
+    words: Spring Cloud Config,Spring Cloud Config
+#    words: SPRING CLOUD CONFIG,SPRING CLOUD CONFIG

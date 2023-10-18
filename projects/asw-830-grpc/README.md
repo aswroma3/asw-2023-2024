@@ -71,4 +71,3 @@ Per eseguire le applicazioni **b-restaurant** e **c-restaurant-with-menu** si pr
    a. posizionarsi nella cartella principale dell'applicazione `~/projects/asw-830-grpc/b-restaurant` oppure `~/projects/asw-830-grpc/c-restaurant-with-menu`
 
    b. eseguire il comando `gradle restaurant-client-grpc:bootRun` 
-

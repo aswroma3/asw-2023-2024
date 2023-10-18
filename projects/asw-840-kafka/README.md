@@ -38,4 +38,3 @@ Vanno però utilizzate più finestre (terminali) diverse, una per ciascun componen
 ### Esecuzione 
 
 Per l'esecuzione delle diverse applicazioni, vedere il file README nella cartella di ciascun progetto. 
-

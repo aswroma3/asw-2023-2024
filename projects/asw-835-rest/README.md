@@ -76,4 +76,3 @@ Per eseguire le applicazioni **b-restaurant** e **c-restaurant-with-menu** si pr
    b. eseguire il comando `gradle restaurant-client-rest:bootRun` (utilizza il client sincrono) 
    
    c. per utilizzare il client asincrono, eseguire il comando `gradle restaurant-async-client-rest:bootRun` 
-

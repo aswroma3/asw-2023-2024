@@ -14,10 +14,10 @@ dependencies {
 
 	compileOnly 'org.springframework.boot:spring-boot-starter-aop'
 
-	compileOnly "org.projectlombok:lombok:${lombokVersion}"
-	annotationProcessor "org.projectlombok:lombok:${lombokVersion}"
+	compileOnly 'org.projectlombok:lombok'
+	annotationProcessor 'org.projectlombok:lombok'
 
-	implementation "org.springdoc:springdoc-openapi-ui:${springdocVersion}"
+	implementation "org.springdoc:springdoc-openapi-starter-webmvc-ui:${springdocOpenApiVersion}"
 	
 }
 

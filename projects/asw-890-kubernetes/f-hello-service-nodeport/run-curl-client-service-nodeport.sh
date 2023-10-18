@@ -11,7 +11,8 @@ SERVICE_PORT=$(kubectl get services/${SERVICE} -o go-template='{{(index .spec.po
 
 echo Accessing ${SERVICE} on ${SERVICE_HOST}:${SERVICE_PORT}
 
-while true; do 
+N=${1:-10}
+for ((i=0; i<$N; i++)); do  
 	curl ${SERVICE_HOST}:${SERVICE_PORT}
 	echo "" ; 
 done 

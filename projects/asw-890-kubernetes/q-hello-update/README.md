@@ -31,5 +31,5 @@ Sul nodo **kube-dev**, si proceda come segue:
 
 * nell'altra finestra, verificare la transizione dalla versione **3.0** alla versione **2.0** per tutte le repliche del servizio  
 
-* per arrestare l'applicazione **hello**, eseguire lo script `e-undeploy-hello.sh` 
+* per arrestare l'applicazione **hello**, eseguire lo script `undeploy-hello.sh` 
 

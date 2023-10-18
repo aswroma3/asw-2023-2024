@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: hello
-        image: aswroma3/hello-update-kube:2022-10-v1
+        image: aswroma3/hello-update-kube:2023-08-v1
         readinessProbe: 
           httpGet: 
             path: /actuator/health
@@ -36,7 +36,6 @@ spec:
   - port: 8080
     targetPort: 8080
 #     nodePort: 32083
-
 
 ---
 kind: Ingress

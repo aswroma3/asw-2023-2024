@@ -1,7 +1,7 @@
 #!/bin/bash
 
 DOCKERHUB_USERNAME=aswroma3 
-VERSION=2022-10
+VERSION=2023-10
 
 docker tag sentence-sentence ${DOCKERHUB_USERNAME}/sentence-sentence:${VERSION}
 docker tag sentence-sentence-async ${DOCKERHUB_USERNAME}/sentence-sentence-async:${VERSION}

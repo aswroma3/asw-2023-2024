@@ -18,7 +18,7 @@ asw.sentence:
 
 # abilita il refresh e il refresh dinamico esponendo gli endpoint selezionati 
 # https://docs.spring.io/spring-boot/docs/current/reference/html/production-ready-endpoints.html 
-management.endpoints.web.exposure.include: info,health,refresh,bus-refresh 
+management.endpoints.web.exposure.include: info,health,refresh,busrefresh 
 
 --- 
 spring: 

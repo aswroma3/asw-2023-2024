@@ -2,9 +2,9 @@
 
 # effettua il refresh della configurazione dei servizi word
 
-curl -X POST http://localhost:8081/actuator/refresh/
-curl -X POST http://localhost:8082/actuator/refresh/
-curl -X POST http://localhost:8083/actuator/refresh/
+curl -X POST http://localhost:8081/actuator/refresh
+curl -X POST http://localhost:8082/actuator/refresh
+curl -X POST http://localhost:8083/actuator/refresh
 
 # esempio: 
 # 1) avvia l'applicazione senza aver avviato il config server 

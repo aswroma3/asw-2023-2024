@@ -11,8 +11,10 @@ import java.util.logging.Logger;
 import java.util.*; 
 import java.util.stream.*; 
 
-import javax.annotation.PostConstruct;
-import javax.annotation.PreDestroy;
+//import javax.annotation.PostConstruct;
+//import javax.annotation.PreDestroy;
+import jakarta.annotation.PostConstruct;
+import jakarta.annotation.PreDestroy;
 import java.io.IOException;
 
 import org.springframework.stereotype.Component;

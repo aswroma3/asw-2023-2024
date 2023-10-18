@@ -4,7 +4,7 @@
 # NON USARE DIRETTAMENTE 
 # chiamare tramite delete-hello-image-from-kube-cluster.sh
 
-VERSION=2022-10
+VERSION=2023-08
 
 # con docker 
 

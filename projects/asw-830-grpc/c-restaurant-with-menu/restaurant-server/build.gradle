@@ -19,5 +19,4 @@ dependencies {
 
 	implementation "io.grpc:grpc-protobuf:${grpcVersion}"
 	implementation "io.grpc:grpc-stub:${grpcVersion}"
-//	implementation "io.grpc:grpc-netty-shaded:${grpcVersion}"
 }

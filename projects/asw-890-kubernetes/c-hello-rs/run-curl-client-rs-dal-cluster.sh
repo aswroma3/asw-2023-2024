@@ -9,7 +9,8 @@ echo Accessing ${APP}
 
 PODS=$(kubectl get pods -l app=${APP} | grep ${APP} | awk '{print $1}')
 
-while true; do 
+N=${1:-10}
+for ((i=0; i<$N; i++)); do 
     # POD=$(kubectl get pods -l app=${APP} | grep ${APP} | awk '{print $1}' | shuf -n 1)
     POD=$(shuf -e -n 1 ${PODS})
 	POD_HOST=$(kubectl describe pod ${POD} | grep ^IP: | awk '{print $2}')

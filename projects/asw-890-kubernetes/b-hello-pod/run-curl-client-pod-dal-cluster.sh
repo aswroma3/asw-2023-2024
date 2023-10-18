@@ -11,7 +11,8 @@ POD_PORT=8080
 
 echo Accessing ${POD} on ${POD_HOST}:${POD_PORT}
 
-while true; do 
+N=${1:-10}
+for ((i=0; i<$N; i++)); do 
 	curl ${POD_HOST}:${POD_PORT}
 	echo "" ; 
 done 

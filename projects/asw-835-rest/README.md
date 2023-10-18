@@ -55,9 +55,9 @@ Per eseguire l'applicazione **a-hello** si proceda come segue:
 
    b. eseguire il comando `gradle hello-client:bootRun` (basato su *WebClient*)
    
-   c. in alternativa, usare il comando `./run-curl-client.sh` per eseguire un semplice client bash/curl anziché il client Java 
-
    c. per utilizzare invece il client basato su *RestTemplate*, eseguire il comando `gradle hello-client-resttemplate:bootRun` 
+
+   d. come ulteriore alternativa, usare il comando `./run-curl-client.sh` per eseguire un semplice client bash/curl anziché il client Java 
 
 Per eseguire le applicazioni **b-restaurant** e **c-restaurant-with-menu** si proceda come segue: 
 

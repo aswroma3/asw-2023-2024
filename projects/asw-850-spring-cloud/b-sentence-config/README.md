@@ -17,11 +17,13 @@ Questa versione dell'applicazione **sentence** è formata dai seguenti component
 
 Per eseguire questa versione dell'applicazione: 
 
-* per avviare il configuration server, eseguire lo script `run-config-server-local.sh` (usa la configurazione nei file locali) oppure lo script `run-config-server-remote.sh` (usa la configurazione su Git)
+* per avviare il configuration server, eseguire lo script `run-config-server-local.sh` (usa la configurazione nei file locali del configuration server) oppure lo script `run-config-server-remote.sh` (usa la configurazione su Git)
+
+* se non viene avviato il configuration server, allora viene usata la configurazione di default dell'applicazione 
 
 * per avviare l'applicazione *sentence*, eseguire lo script `run-sentence.sh` 
 
-L'applicazione può essere verificata usando lo script `run-curl-client.sh` oppure `run-curl-client-forever.sh`. 
+L'applicazione può essere verificata usando lo script `run-curl-client.sh` oppure `run-curl-client.sh N` per invocare il servizio *N* volte.  
 
 Alla fine, l'applicazione può essere arrestata usando lo script `terminate-java-processes.sh` (**da usare con cautela!**). 
 

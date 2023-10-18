@@ -14,8 +14,10 @@ import io.grpc.StatusRuntimeException;
 import java.util.concurrent.TimeUnit;
 import com.google.common.util.concurrent.ListenableFuture;
 
-import javax.annotation.PostConstruct;
-import javax.annotation.PreDestroy;
+//import javax.annotation.PostConstruct;
+//import javax.annotation.PreDestroy;
+import jakarta.annotation.PostConstruct;
+import jakarta.annotation.PreDestroy;
 
 import org.springframework.beans.factory.annotation.Value;
 

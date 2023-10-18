@@ -45,7 +45,7 @@ Vanno però utilizzate più finestre (terminali) diverse. In genere, una per l'app
 
 ### Esecuzione 
 
-Per l'esecuzione delle diverse versioni dell'applicazione, vedere il file README nella cartella di ciascun sottoprogetto. 
+Per l'esecuzione delle diverse versioni dell'applicazione, vedere il file *README* nella cartella di ciascun sottoprogetto. 
 
 In generale, per eseguire una versione dell'applicazione, bisogna avviare individualmente i servizi che la compongono. Ciascuna versione dell'applicazione contiene gli script necessari ad avviare l'applicazione. 
 
@@ -54,7 +54,7 @@ In generale, per eseguire una versione dell'applicazione, bisogna avviare indivi
 Complessivamente, l'applicazione *sentence* espone un servizio REST sulla porta **8080** del nodo **workstation**, 
 ed è possibile ottenere una frase casuale all'indirizzo `localhost:8080`.
 
-In pratica, l'applicazione può essere verificata usando lo script `run-curl-client.sh` oppure `run-curl-client-forever.sh` (alla fine va arrestato con **CTRL-C**). 
+In pratica, l'applicazione può essere verificata usando lo script `run-curl-client.sh` oppure `run-curl-client.sh N` per invocare il servizio *N* volte. 
 
 Alla fine, l'applicazione può essere arrestata usando lo script `terminate-java-processes.sh` (**da usare con cautela, perché fa il `pkill` di tutti i processi Java in esecuzione**). 
 

@@ -20,12 +20,13 @@ repositories {
 }
 
 group = 'asw.grpc'
-//sourceCompatibility = '1.8'
 
 dependencies {
     implementation "io.grpc:grpc-protobuf:${grpcVersion}"
     implementation "io.grpc:grpc-stub:${grpcVersion}"
-	compileOnly "javax.annotation:javax.annotation-api:1.2"
+
+	// per le annotazioni javax
+	compileOnly "jakarta.annotation:jakarta.annotation-api:${jakartaAnnotationApiVersionForGRPCGeneratedCode}"
 	
     implementation "io.grpc:grpc-netty-shaded:${grpcVersion}"
 	implementation "com.google.protobuf:protobuf-java-util:${protobufVersion}"

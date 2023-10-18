@@ -23,7 +23,7 @@ Per eseguire questa versione dell'applicazione:
 
 * per avviare l'applicazione *sentence*, eseguire lo script `run-sentence.sh` 
 
-L'applicazione può essere verificata usando lo script `run-curl-client.sh` oppure `run-curl-client-forever.sh`. 
+L'applicazione può essere verificata usando lo script `run-curl-client.sh` oppure `run-curl-client.sh N` per invocare il servizio *N* volte.  
 
 Alla fine: 
 
@@ -42,13 +42,15 @@ Se non viene avviato il configuration server ma solo l'applicazione *sentence*, 
 
 ### Refresh della configurazione  
 
+* avviare il message broker RabbitMQ, eseguendo lo script `start-rabbitmq.sh`
+
 * non avviare il configuration server 
 
 * avviare l'applicazione *sentence*, eseguendo lo script `run-sentence.sh` 
 
 * eseguire lo script `run-curl-client.sh`: la frase casuale generata è *default default default* (l'applicazione usa la configurazione definita nei file di configurazione locali all'applicazione)
 
-* avviare il configuration server, eseguendo lo script `run-config-server-local.sh` (usa la configurazione nei file locali) 
+* avviare il configuration server, eseguendo lo script `run-config-server-local.sh` (usa la configurazione nei file locali del configuration server) 
 
 * eseguire lo script `run-curl-client.sh`: la frase casuale generata è ancora *default default default* (l'applicazione usa la configurazione definita nei file di configurazione locali all'applicazione)
 

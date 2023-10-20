@@ -47,6 +47,11 @@ public class ServiceClientUDPProxy implements Service {
             /* crea un datagramma che codifica la richiesta di servizio e i relativi parametri */
             /* la richiesta ha la forma "operazione$parametro" */
             String request = op + "$" + arg;
+			/* per simulare una richiesta malformata */
+			// if (op.equals("beta") && arg.equals("Alfa")) {
+			// 	request = op + "!" + arg;
+			// }
+			
             byte[] requestMessage = request.getBytes();
             DatagramPacket requestPacket =
                  new DatagramPacket(requestMessage,

@@ -41,7 +41,8 @@ public class ServerThread extends Thread {
 			String request = in.readUTF();  // bloccante
     		logger.info("Server Proxy: connection [" + serverThreadId + "]: received request: " + request);
 
-            /* la richiesta ha la forma "operazione$argomento" */
+            /* la richiesta dovrebbe avere la forma "operazione$argomento" 
+			 * (ma potrebbe essere malformata) */
             /* estrae operazione e argomento */
             String op = this.getOp(request);
             String arg = this.getParam(request);
@@ -85,17 +86,29 @@ public class ServerThread extends Thread {
 
     /* estrae l'operazione dalla richiesta */
     private String getOp(String request) {
-        /* la richiesta ha la forma "operazione$parametro" */
+        /* la richiesta dovrebbe avere la forma "operazione$parametro" */
         int sep = request.indexOf("$");
-        String op = request.substring(0,sep);
+        String op; 
+		if (sep>=0) {
+			op = request.substring(0,sep); 
+		} else {
+			/* se manca il $, assume che il parametro sia null */ 
+			op = request; 
+		}
         return op;
     }
 
     /* estrae il parametro dalla richiesta */
     private String getParam(String request) {
-        /* la richiesta ha la forma "operazione$parametro" */
+        /* la richiesta dovrebbe avere la forma "operazione$parametro" */
         int sep = request.indexOf("$");
-        String param = request.substring(sep+1);
+		String param; 
+		if (sep>=0) {
+			param = request.substring(sep+1);
+		} else {
+			/* se manca il $, assume che il parametro sia null */ 
+			param = null; 
+		}
         return param;
     }
 

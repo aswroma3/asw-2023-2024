@@ -52,6 +52,10 @@ public class ServiceClientTCPProxy implements Service {
         	/* codifica la richiesta di servizio e i relativi parametri */
             /* la richiesta ha la forma "operazione$parametro" */
 			String request = op + "$" + arg;
+			/* per simulare una richiesta malformata */
+			// if (op.equals("beta") && arg.equals("Alfa")) {
+			// 	request = op + "!" + arg;
+			// }
 
 			/* invia la richiesta */
             logger.info("Client Proxy: sending request: " + request);

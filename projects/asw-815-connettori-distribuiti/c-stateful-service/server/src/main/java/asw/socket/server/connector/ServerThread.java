@@ -46,15 +46,14 @@ public class ServerThread extends Thread {
 				String request = in.readUTF();  // bloccante
 	    		logger.info("Server Proxy: connection [" + serverThreadId + "]: received request: " + request);
 
-	            /* estrae operazione e parametro */
-	            /* la richiesta ha la forma "operazione$parametro" */
-	            String op = this.getOp(request);
-	            String param = this.getParam(request);
+	            /* estrae operazione */
+	            /* la richiesta ha la forma "operazione" */
+	            String op = request;
 
 	            /* chiedi l'erogazione del servizio ed ottieni la risposta */
 	            String result = null;
 	            try {
-		            result = this.executeOperation(op, param);
+		            result = this.executeOperation(op);
 	    		} catch (RemoteException e) {
 	                /* il servente non solleva MAI RemoteException, 
 					 * ma si può arrivare qui da executeOperation() 
@@ -83,24 +82,9 @@ public class ServerThread extends Thread {
 		logger.info("Server Proxy: closing connection [" + serverThreadId + "]");
 	}
 
-    /* estrae l'operazione dalla richiesta */
-    private String getOp(String request) {
-        /* la richiesta ha la forma "operazione$parametro" */
-        int sep = request.indexOf("$");
-        String op = request.substring(0,sep);
-        return op;
-    }
-
-    /* estrae il parametro dalla richiesta */
-    private String getParam(String request) {
-        /* la richiesta ha la forma "operazione$parametro" */
-        int sep = request.indexOf("$");
-        String param = request.substring(sep+1);
-        return param;
-    }
 
     /* gestisce la richiesta del servizio corretto al servente */
-    private String executeOperation(String op, String param) throws RemoteException {
+    private String executeOperation(String op) throws RemoteException {
         String reply = null;
 
         if ( op.equals("CONNECT") ) {

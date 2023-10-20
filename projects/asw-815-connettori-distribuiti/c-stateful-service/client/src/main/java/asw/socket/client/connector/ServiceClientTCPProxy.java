@@ -29,17 +29,17 @@ public class ServiceClientTCPProxy implements RemoteCounterService {
 
 	/* incrementa il contatore */
     public void incrementCounter() throws RemoteException {
-    	doOperation("incrementCounter", "");
+    	doOperation("incrementCounter");
     }
 
     /* restituisce il contatore globale */
     public int getGlobalCounter() throws RemoteException {
-    	return new Scanner( doOperation("getGlobalCounter", "") ).nextInt();
+    	return new Scanner( doOperation("getGlobalCounter") ).nextInt();
     }
 
     /* restituisce il contatore di sessione */
     public int getSessionCounter() throws RemoteException {
-    	return new Scanner( doOperation("getSessionCounter", "") ).nextInt();
+    	return new Scanner( doOperation("getSessionCounter") ).nextInt();
     }
 
     /* avvia una nuova sessione */
@@ -54,12 +54,12 @@ public class ServiceClientTCPProxy implements RemoteCounterService {
 			logger.info("Client Proxy: connect: IO Exception: " + e.getMessage());
 			throw new RemoteException("IO Exception: " + e.getMessage());
 		}
-    	doOperation("CONNECT", "");
+    	doOperation("CONNECT");
     }
 
     /* chiude la sessione */
     public void disconnect() throws RemoteException {
-    	doOperation("DISCONNECT", "");
+    	doOperation("DISCONNECT");
 		try {
 			socket.close();
 		} catch (IOException e) {
@@ -69,12 +69,12 @@ public class ServiceClientTCPProxy implements RemoteCounterService {
     }
 
     /* metodo di supporto per la comunicazione remota */
-    private String doOperation(String op, String arg) throws RemoteException {
+    private String doOperation(String op) throws RemoteException {
     	String result = null;
         try {
         	/* codifica la richiesta di servizio ed i relativi parametri */
-            /* la richiesta ha la forma "operazione$parametro" */
-			String request = op + "$" + arg;
+            /* la richiesta ha la forma "operazione" */
+			String request = op;
 
 			/* invia la richiesta */
             logger.info("Client Proxy: sending request: " + request);

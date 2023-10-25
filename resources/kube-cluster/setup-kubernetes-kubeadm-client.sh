@@ -5,6 +5,8 @@ echo "installing kubernetes (with kubeadm) for client"
 echo "==============================================="
 
 # https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/
+# https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/
+# versione 1.28
 
 # let iptables see bridged traffic
 cat <<EOF | tee /etc/sysctl.d/k8s.conf
@@ -15,11 +17,16 @@ sysctl --system
 
 # installing kubectl
 
-apt-get update && sudo apt-get install -y apt-transport-https curl
-curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
-cat <<EOF | sudo tee /etc/apt/sources.list.d/kubernetes.list
-deb https://apt.kubernetes.io/ kubernetes-xenial main
-EOF
+apt-get update 
+apt-get install -y apt-transport-https ca-certificates curl gpg
+curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.28/deb/Release.key | gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg
+echo 'deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.28/deb/ /' | tee /etc/apt/sources.list.d/kubernetes.list
+
+# curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
+# cat <<EOF | sudo tee /etc/apt/sources.list.d/kubernetes.list
+# deb https://apt.kubernetes.io/ kubernetes-xenial main
+# EOF
+
 apt-get update
 #apt-get install -y kubelet kubeadm kubectl
 apt-get install -y kubectl

@@ -14,7 +14,7 @@ KUBE_CLUSTER_NODES = [
     {
         :name => "kube-1",
         :type => "master",
-        :box => "bento/ubuntu-20.04",
+        :box => "bento/ubuntu-22.04",
         :eth1 => "10.11.1.71",
         :httpport => "8081",
         :ingressport => "31081",
@@ -25,34 +25,34 @@ KUBE_CLUSTER_NODES = [
     {
         :name => "kube-2",
         :type => "worker",
-        :box => "bento/ubuntu-20.04",
+        :box => "bento/ubuntu-22.04",
         :eth1 => "10.11.1.72",
         :httpport => "8082",
         :ingressport => "31082",
         :memory => "2048",
         :cpus => "2", 
-        :cpuexecutioncap => "50" 
+        :cpuexecutioncap => "100" 
     },
     {
         :name => "kube-3",
         :type => "worker",
-        :box => "bento/ubuntu-20.04",
+        :box => "bento/ubuntu-22.04",
         :eth1 => "10.11.1.73",
         :httpport => "8083",
         :ingressport => "31083",
         :memory => "2048",
         :cpus => "2", 
-        :cpuexecutioncap => "50" 
+        :cpuexecutioncap => "100" 
     },
     {
         :name => "kube-dev",
         :type => "dev",
-        :box => "bento/ubuntu-20.04",
+        :box => "bento/ubuntu-22.04",
         :eth1 => "10.11.1.131",
         :gocdport => "8153",
         :memory => "2048",
         :cpus => "2", 
-        :cpuexecutioncap => "50" 
+        :cpuexecutioncap => "100" 
     }
 ]
 
@@ -60,7 +60,7 @@ VAGRANTFILE_API_VERSION = "2"
 
 ASW_RESOURCES='/home/asw/resources/'
 
-IMAGE_BOX = "bento/ubuntu-20.04" 
+IMAGE_BOX = "bento/ubuntu-22.04" 
 
 POD_NETWORK_CIDR = "10.12.0.0"
 

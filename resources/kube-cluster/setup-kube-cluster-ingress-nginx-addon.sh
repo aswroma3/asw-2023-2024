@@ -7,7 +7,7 @@
 #    https://kubernetes.github.io/ingress-nginx/deploy/ 
 
 # usiamo il secondo (malgrado non sia possibile accedervi sulla porta 80) 
-# anche perché con il secondo non sono comunque riuscito a usare la porta 80 
+# perché il promo è molto lento 
 
 echo "======================================================="
 echo "installing kubernetes nginx ingress controller (master)"
@@ -21,7 +21,7 @@ mkdir -p ${INGRESS_NGINX_FOLDER}
 
 # modifica il file di configurazione in modo che la porta per http/https dell'ingress siano fissate su 31080/31443 
 
-curl -s -L https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.5.1/deploy/static/provider/baremetal/deploy.yaml \
+curl -s -L https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.8.2/deploy/static/provider/baremetal/deploy.yaml \
         | sed 's/targetPort: http$/&\n    nodePort: 31080/' \
         | sed 's/targetPort: https$/&\n    nodePort: 31443/' \
 		> ${INGRESS_NGINX_FOLDER}/ingress-nginx-nodeport-deploy.yaml

@@ -9,10 +9,15 @@ source "/home/asw/resources/common.sh"
 # e.g. https://github.com/opencontainers/runc/releases/download/v1.1.2/runc.amd64
 # see https://github.com/containernetworking/plugins/releases 
 # e.g. https://github.com/containernetworking/plugins/releases/download/v1.1.1/cni-plugins-linux-amd64-v1.1.1.tgz
+# nerdctl è l'analogo del client docker per containerd 
+# https://github.com/containerd/nerdctl 
+# https://github.com/containerd/nerdctl/releases 
+# https://github.com/containerd/nerdctl/releases/download/v1.1.0/nerdctl-1.1.0-linux-amd64.tar.gz
 
-CONTAINERD_VERSION=1.6.15
-RUNC_VERSION=1.1.4
-CNI_VERSION=1.1.1
+CONTAINERD_VERSION=1.7.7
+RUNC_VERSION=1.1.9
+CNI_VERSION=1.3.0
+NERDCTL_VERSION=1.6.2
 
 echo "====================="
 echo "installing containerd"
@@ -41,10 +46,11 @@ sudo sysctl --system
 
 # runc 
 
-if ! downloadExists runc.amd64 ; then
+if ! downloadExists runc-${RUNC_VERSION}.amd64 ; then
 	wget -q -P ${ASW_DOWNLOADS} https://github.com/opencontainers/runc/releases/download/v${RUNC_VERSION}/runc.amd64
+	mv ${ASW_DOWNLOADS}/runc.amd64 ${ASW_DOWNLOADS}/runc-${RUNC_VERSION}.amd64
 fi
-install -m 755 ${ASW_DOWNLOADS}/runc.amd64 /usr/local/sbin/runc
+install -m 755 ${ASW_DOWNLOADS}/runc-${RUNC_VERSION}.amd64 /usr/local/sbin/runc
 
 # cni plugin 
 
@@ -64,6 +70,9 @@ tar Cxzvf /usr/local ${ASW_DOWNLOADS}/containerd-${CONTAINERD_VERSION}-linux-amd
 mkdir -p /usr/local/lib/systemd/system/ 
 cp ${ASW_RESOURCES}/kube-cluster/containerd.service /usr/local/lib/systemd/system/
 
+# il file config.toml è stato creato con containerd config default
+# poi editato seguendo https://kubernetes.io/docs/setup/production-environment/container-runtimes/#containerd
+
 mkdir -p /etc/containerd
 cp ${ASW_RESOURCES}/kube-cluster/etc.containerd/config.toml /etc/containerd/config.toml
 
@@ -72,13 +81,6 @@ systemctl enable --now containerd
 systemctl restart containerd
 
 # installa anche nerdctl 
-
-# nerdctl è l'analogo del client docker per containerd 
-# https://github.com/containerd/nerdctl 
-# https://github.com/containerd/nerdctl/releases 
-# https://github.com/containerd/nerdctl/releases/download/v1.1.0/nerdctl-1.1.0-linux-amd64.tar.gz
-
-NERDCTL_VERSION=1.1.0
 
 if ! downloadExists nerdctl-${NERDCTL_VERSION}-linux-amd64.tar.gz ; then
 	wget -q -P ${ASW_DOWNLOADS} https://github.com/containerd/nerdctl/releases/download/v${NERDCTL_VERSION}/nerdctl-${NERDCTL_VERSION}-linux-amd64.tar.gz

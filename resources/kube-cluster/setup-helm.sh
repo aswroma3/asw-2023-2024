@@ -1,8 +1,9 @@
 #!/bin/bash
 
 # see https://helm.sh/docs/intro/install/
+# https://github.com/helm/helm/releases
 
-HELM_VERSION=3.10.3
+HELM_VERSION=3.13.1
 
 # https://get.helm.sh/helm-v3.10.3-linux-amd64.tar.gz
 

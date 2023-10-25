@@ -21,6 +21,7 @@ mkdir -p ${NGINX_INGRESS_FOLDER}
 
 # attenzione: usare una versione specifica e non usare il branch "main"
 GITHUB_URL=https://raw.githubusercontent.com/nginxinc/kubernetes-ingress/v2.4.2/deployments/
+# dovrei provare con GITHUB_URL=https://raw.githubusercontent.com/nginxinc/kubernetes-ingress/v3.3.1/deployments/
 
 kubectl apply -f ${GITHUB_URL}common/ns-and-sa.yaml
 kubectl apply -f ${GITHUB_URL}rbac/rbac.yaml

@@ -18,12 +18,12 @@ Volendo, eseguire anche lo script `push-docker-images-with-compose.sh` (richiede
 
 Dalla cartella principale dell'applicazione, usare il comando `docker compose -f docker-compose.yml up` oppure lo script `run-sentence-compose.sh`
 
-L'applicazione può essere verificata usando lo script `run-curl-client.sh` oppure `run-curl-client-forever.sh` 
+L'applicazione può essere verificata usando lo script `run-curl-client.sh` oppure `run-curl-client.sh N` per invocare il servizio *N* volte 
 
 Alla fine, l'applicazione può essere arrestata usando il comando `docker compose -f docker-compose.yml down` oppure lo script `stop-sentence-compose.sh`  
 
 
-### Esecuzione con più istanze dei contenitori  
+### Esecuzione con più istanze dei container  
 
 Usare gli script `scale-sentence-up.sh` e `scale-sentence-down.sh`
 

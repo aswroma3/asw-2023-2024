@@ -22,12 +22,12 @@ In alternativa si può usare lo script `run-sentence-docker-from-docker-hub.sh`,
 
 Per verificare che l'applicazione sia stata avviata correttamente (ci vuole circa un minuto) usare il comando `docker ps` per verificare che lo *status* dei diversi container sia *healthy* e non *starting* 
 
-L'applicazione può essere verificata usando lo script `run-curl-client.sh` oppure `run-curl-client-forever.sh` 
+L'applicazione può essere verificata usando lo script `run-curl-client.sh` oppure `run-curl-client.sh N` per invocare il servizio *N* volte 
 
 Alla fine, l'applicazione può essere arrestata usando lo script `stop-and-remove-sentence-containers.sh`  
 
 
-### Esecuzione con più istanze dei contenitori  
+### Esecuzione con più istanze dei container  
 
 Usare lo script `run-sentence-docker-replicated.sh` oppure lo script `run-sentence-docker-replicated-from-docker-hub.sh`
 

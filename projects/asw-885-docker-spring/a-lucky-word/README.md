@@ -17,7 +17,7 @@ Esaminiamo le due modalità separatamente.
 
 Per prima cosa, è necessario effettuare la build (Java) dell'applicazione con Gradle,  
 nell'ambiente [workstation](../../../environments/workstation/), 
-sempre essendo posizionati nella cartella del sotto progetto: 
+sempre essendo posizionati nella cartella del sottoprogetto: 
 
 * eseguire `gradle build` nella cartella del sottoprogetto 
 

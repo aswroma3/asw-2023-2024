@@ -4,7 +4,7 @@ spring:
   application.name: ${spring.config.activate.on-profile}
   cloud:
     consul:
-#      host: localhost
+      # host: localhost
       host: consul
       port: 8500
       discovery: 

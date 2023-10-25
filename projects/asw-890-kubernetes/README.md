@@ -35,6 +35,7 @@ dell'applicazione distribuita **sentence** descritte nei progetti [asw-850-sprin
 ## Ambiente di esecuzione 
 
 Queste applicazioni vanno eseguite nell'ambiente [kube-cluster](../../environments/kube-cluster/), sul nodo **kube-dev**. 
-(In alcuni casi preliminari o intermedi, il client può essere eseguito solo dai nodi **kube-1**, **kube-2** e **kube-3** del cluster.) 
-Vanno però utilizzate più finestre (terminali) diverse. In genere, una per l'applicazione e una per il suo client.  
+
+In alcuni casi preliminari o intermedi, il client può essere eseguito solo dai nodi **kube-1**, **kube-2** e **kube-3** del cluster. 
+Vanno però utilizzate più finestre (terminali) diverse. In genere, una per avviare l'applicazione e una per il suo client.  
 

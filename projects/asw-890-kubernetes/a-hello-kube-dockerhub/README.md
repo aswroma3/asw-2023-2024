@@ -7,6 +7,8 @@ Tuttavia, questo sottoprogetto non contiene i file di specifica per il rilascio 
 
 ## Build Java - OPZIONALE 
 
+*Questo passo è necessario solo se si vogliono utilizzare delle immagini Docker diverse da quelle predisposte dal docente del corso.*
+
 Per la costruzione dell'applicazione, eseguire il comando `gradle assemble` oppure `gradle build`
 
 ## Build (Docker) - OPZIONALE 

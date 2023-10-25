@@ -1,13 +1,12 @@
-apply plugin: 'org.springframework.boot'
-apply plugin: 'io.spring.dependency-management'
-
-dependencyManagement {
-	imports {
-		mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
-	}
+plugins {
+	id 'org.springframework.boot' 
+	id 'io.spring.dependency-management' 
+	id 'base' 
 }
 
-archivesBaseName = 'hello'
+base {
+    archivesName = 'hello'
+}
 version = '2.0'
 
 dependencies {

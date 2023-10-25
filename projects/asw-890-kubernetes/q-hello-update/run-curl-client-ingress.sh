@@ -21,7 +21,9 @@ SERVICE_HOST=hello.aswroma3.it
 
 echo Accessing ${SERVICE} on ${SERVICE_HOST}:${INGRESS_PORT}
 
-while true; do 
+N=${1:-10}
+
+for ((i=0; i<$N; i++)); do 
 #	curl ${SERVICE_HOST}:${INGRESS_PORT} --resolve ${SERVICE_HOST}:${INGRESS_PORT}:${KUBE_CLUSTER_IP} 
 #	echo "" ; 
 #	curl ${SERVICE_HOST}:80 --connect-to ${SERVICE_HOST}:80:${KUBE_CLUSTER_IP}:${INGRESS_PORT} 

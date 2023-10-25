@@ -21,4 +21,3 @@ Per eseguire questa versione dell'applicazione:
 L'applicazione può essere verificata usando lo script `run-curl-client.sh` oppure `run-curl-client.sh N` per invocare il servizio *N* volte. 
 
 Alla fine, l'applicazione può essere arrestata usando lo script `terminate-java-processes.sh` (**da usare con cautela!**). 
-

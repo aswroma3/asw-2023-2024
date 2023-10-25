@@ -67,4 +67,3 @@ Se non viene avviato il configuration server ma solo l'applicazione *sentence*, 
 * effettuare il refresh dell'applicazione *sentence* in modo dinamico, eseguendo lo script `refresh-configuration-bus.sh` 
 
 * eseguire lo script `run-curl-client.sh`: la frase casuale generata ora è *SPRING CLOUD CONFIG WORKS FROM REMOTE FILES* (l'applicazione usa la configurazione remota su GitHub)
-

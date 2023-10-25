@@ -34,4 +34,3 @@ Il solo configuration server può invece essere arrestato usando lo script `kill
 ### Esecuzione senza configuration server 
 
 Se non viene avviato il configuration server ma solo l'applicazione *sentence*, allora l'applicazione usa la configurazione definita nei file di configurazione locali all'applicazione *sentence*. 
-

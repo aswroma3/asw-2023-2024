@@ -24,7 +24,7 @@ Per eseguire questa versione dell'applicazione:
 
 * per avviare l'applicazione *sentence*, eseguire lo script `run-sentence.sh` 
 
-L'applicazione può essere verificata usando lo script `run-curl-client.sh` oppure `run-curl-client-forever.sh`. 
+L'applicazione può essere verificata usando lo script `run-curl-client.sh` oppure `run-curl-client.sh N` per invocare il servizio *N* volte.  
 
 Alla fine, l'applicazione può essere arrestata usando lo script `terminate-java-processes.sh` (**da usare con cautela!**). 
 
@@ -32,9 +32,9 @@ Inoltre, *Consul* può essere arrestato con lo script `stop-consul.sh`.
 
 ### Altre modalità di esecuzione 
 
-* lo script `run-sentence-with-delays.sh` introduce un ritardo sia nel servizio delle parole che nel servizio delle frasi 
+* lo script `run-sentence-with-delays.sh` introduce un ritardo sia nel servizio delle parole che nel servizio delle frasi (le latenze si sommano)
 
-* lo script `run-sentence-with-failures.sh` introduce la possibilità che uno o più servizi delle parole falliscano (con una certa probabilità) 
+* lo script `run-sentence-with-failures.sh` introduce la possibilità che uno o più servizi delle parole falliscano, con una certa probabilità (le parole mancanti vengono sostituite con degli asterischi)
 
 * lo script `run-sentence-replicated.sh` avvia due istanze del servizio *word-service* per ciascuno dei suoi tre profili (ma una sola istanza del servizio *sentence-service*)
 

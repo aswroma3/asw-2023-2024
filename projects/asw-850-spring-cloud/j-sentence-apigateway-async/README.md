@@ -1,4 +1,4 @@
-# Sentence (con Consul e Spring Cloud Consul Discovery, Spring Cloud LoadBalancer, Spring Cloud OpenFeign, Spring Cloud Circuit Breaker/Resilience4J e chiamate remote asincrone e concorrenti)
+# Sentence (con Consul e Spring Cloud Consul Discovery, Spring Cloud LoadBalancer, Spring Cloud Circuit Breaker/Resilience4J, Spring Cloud Gateway e chiamate remote asincrone e concorrenti)
 
 Questo sottoprogetto mostra una versione dell'applicazione **sentence** che, oltre al servizio di service discovery, un load balancer lato client, circuit breaker e retry, un API gateway (*Spring Cloud Gateway*), esegue chiamate REST in modo asincrono e concorrente. 
 
@@ -31,7 +31,7 @@ Per eseguire questa versione dell'applicazione:
 
 * per avviare l'applicazione *sentence* (compreso l'API gateway), eseguire lo script `run-sentence.sh` 
 
-L'applicazione può essere verificata usando lo script `run-curl-client.sh` oppure `run-curl-client-forever.sh`. 
+L'applicazione può essere verificata usando lo script `run-curl-client.sh` oppure `run-curl-client.sh N` per invocare il servizio *N* volte.  
 
 Alla fine, l'applicazione può essere arrestata usando lo script `terminate-java-processes.sh` (**da usare con cautela!**). 
 
@@ -39,9 +39,10 @@ Inoltre, *Consul* può essere arrestato con lo script `stop-consul.sh`.
 
 ### Altre modalità di esecuzione 
 
-* lo script `run-sentence-with-delays.sh` introduce un ritardo sia nel servizio delle parole che nel servizio delle frasi 
+* lo script `run-sentence-with-delays.sh` introduce un ritardo sia nel servizio delle parole che nel servizio delle frasi, 
+  ma in questo caso, se viene usata la versione asincrona del servizio delle parole, le latenze dei servizi delle parole non si sommano  
 
-* lo script `run-sentence-with-failures.sh` introduce la possibilità che uno o più servizi delle parole falliscano (con una certa probabilità) 
+* lo script `run-sentence-with-failures.sh` introduce la possibilità che uno o più servizi delle parole falliscano, con una certa probabilità (le parole mancanti vengono sostituite con degli asterischi) 
 
 * lo script `run-sentence-replicated.sh` avvia due istanze del servizio *word-service* per ciascuno dei suoi tre profili, 
   ma anche due istanze del servizio per le frasi, una sincrona di tipo *sentence-service* e una sincrona di tipo *sentence-service-async*

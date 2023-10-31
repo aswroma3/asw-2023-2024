@@ -55,8 +55,8 @@ public class HelloServiceGrpcServer {
     private class HelloServiceImpl extends HelloServiceGrpc.HelloServiceImplBase {
 
         @Override
-        public void sayHello(HelloRequest req, StreamObserver<HelloReply> responseObserver) {
-            String name = req.getName();
+        public void sayHello(HelloRequest request, StreamObserver<HelloReply> responseObserver) {
+            String name = request.getName();
 			logger.info("gRPC server: sayHello(" + name + ")");
 			String greeting = helloService.sayHello(name); 
 			logger.info("gRPC server: sayHello(" + name + "): " + greeting);

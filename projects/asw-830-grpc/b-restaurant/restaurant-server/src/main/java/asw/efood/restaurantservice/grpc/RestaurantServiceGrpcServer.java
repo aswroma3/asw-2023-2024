@@ -54,9 +54,9 @@ public class RestaurantServiceGrpcServer {
     private class RestaurantServiceImpl extends RestaurantServiceGrpc.RestaurantServiceImplBase {
 
         @Override
-        public void createRestaurant(CreateRestaurantRequest req, StreamObserver<CreateRestaurantReply> responseObserver) {
-            String name = req.getName();
-            String location = req.getLocation();
+        public void createRestaurant(CreateRestaurantRequest request, StreamObserver<CreateRestaurantReply> responseObserver) {
+            String name = request.getName();
+            String location = request.getLocation();
 			logger.info("gRPC CALL: createRestaurant " + name + ", " + location); 
             Restaurant restaurant = restaurantService.createRestaurant(name, location);
             CreateRestaurantReply reply = CreateRestaurantReply.newBuilder()
@@ -67,8 +67,8 @@ public class RestaurantServiceGrpcServer {
         }
 
         @Override
-        public void getRestaurant(GetRestaurantRequest req, StreamObserver<GetRestaurantReply> responseObserver) {
-            Long restaurantId = req.getRestaurantId(); 
+        public void getRestaurant(GetRestaurantRequest request, StreamObserver<GetRestaurantReply> responseObserver) {
+            Long restaurantId = request.getRestaurantId(); 
 			logger.info("gRPC CALL: getRestaurant " + restaurantId); 
 			Restaurant restaurant = restaurantService.getRestaurant(restaurantId);
             GetRestaurantReply reply = GetRestaurantReply.newBuilder()
@@ -81,7 +81,7 @@ public class RestaurantServiceGrpcServer {
         }
 
         @Override
-        public void getAllRestaurants(GetAllRestaurantsRequest req, StreamObserver<GetAllRestaurantsReply> responseObserver) {
+        public void getAllRestaurants(GetAllRestaurantsRequest request, StreamObserver<GetAllRestaurantsReply> responseObserver) {
 			logger.info("gRPC CALL: getAllRestaurants"); 
 			Collection<Restaurant> restaurants = restaurantService.getAllRestaurants();
 			List<GetRestaurantReply> rr = 

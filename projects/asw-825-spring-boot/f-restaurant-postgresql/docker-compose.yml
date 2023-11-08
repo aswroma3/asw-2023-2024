@@ -2,7 +2,7 @@ version: '3'
 
 services:
   postgres:
-    image: postgres
+    image: docker.io/postgres:latest
     volumes:
       - "$PWD/postgres:/docker-entrypoint-initdb.d"
     ports:

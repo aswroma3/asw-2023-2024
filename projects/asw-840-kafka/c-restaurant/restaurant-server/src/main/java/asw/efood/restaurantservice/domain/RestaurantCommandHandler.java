@@ -18,9 +18,8 @@ public class RestaurantCommandHandler {
 
 	public void onCommand(Command command) {
 		logger.info("PROCESSING COMMAND: " + command);
-		if (command.getClass().equals(CreateRestaurantCommand.class)) {
-			CreateRestaurantCommand crc = (CreateRestaurantCommand) command;
-			createRestaurant(crc); 
+		if (command instanceof CreateRestaurantCommand cmd) {
+			createRestaurant(cmd); 
 		} else {
 			logger.info("UNKNOWN COMMAND: " + command);			
 		}

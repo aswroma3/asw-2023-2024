@@ -13,9 +13,8 @@ public class RestaurantEventConsumer {
 	private final Logger logger = Logger.getLogger(this.getClass().toString());
 
 	public void onEvent(DomainEvent event) {
-		if (event.getClass().equals(RestaurantCreatedEvent.class)) {
-			RestaurantCreatedEvent rce = (RestaurantCreatedEvent) event;
-			onRestaurantCreated(rce); 
+		if (event instanceof RestaurantCreatedEvent evt) {
+			onRestaurantCreated(evt); 
 		} else {
 			logger.info("UNKNOWN EVENT: " + event);			
 		}

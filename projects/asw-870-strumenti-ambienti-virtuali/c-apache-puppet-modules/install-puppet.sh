@@ -6,7 +6,7 @@ echo "Installing Puppet..."
 
 command -v puppet > /dev/null && { echo "Puppet is installed! skipping" ; exit 0; }
 
-wget https://apt.puppetlabs.com/puppet7-release-$(lsb_release -cs).deb
-dpkg -i puppet7-release-$(lsb_release -cs).deb
+wget https://apt.puppetlabs.com/puppet8-release-$(lsb_release -cs).deb
+dpkg -i puppet8-release-$(lsb_release -cs).deb
 apt-get -qq update
 apt-get install -y puppet-agent

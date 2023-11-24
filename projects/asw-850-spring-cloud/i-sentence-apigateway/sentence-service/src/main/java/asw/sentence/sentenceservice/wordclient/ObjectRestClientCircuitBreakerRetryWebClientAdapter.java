@@ -12,20 +12,19 @@ import reactor.core.publisher.Mono;
 import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
 import io.github.resilience4j.retry.annotation.Retry;
 
-@Service("wordRestClientRetryWebClient") 
-// @Primary 
-public class WordRestClientRetryWebClientAdapter implements WordRestClient {
+@Service("objectRestClient") 
+public class ObjectRestClientCircuitBreakerRetryWebClientAdapter implements WordRestClient {
 
 	@Autowired 
 	@Qualifier("loadBalancedWebClient")
     private WebClient webClient;
 	
-    // @CircuitBreaker(name = "wordClientCircuitBreaker", fallbackMethod = "getFallbackWord")
-    // @Retry(name = "wordClientRetry")
+    @CircuitBreaker(name = "objectClientCircuitBreaker", fallbackMethod = "getFallbackWord")
+    @Retry(name = "wordClientRetry")
 	// oppure 
-    // @CircuitBreaker(name = "wordClientCircuitBreaker", fallbackMethod = "getFallbackWord")
+    // @CircuitBreaker(name = "objectClientCircuitBreaker", fallbackMethod = "getFallbackWord")
 	// oppure 
-    @Retry(name = "wordClientRetry", fallbackMethod = "getFallbackWord")
+    // @Retry(name = "wordClientRetry", fallbackMethod = "getFallbackWord")
 	public String getWord(String service) {
 		String serviceUri = "http://" + service; 
         Mono<String> response = webClient

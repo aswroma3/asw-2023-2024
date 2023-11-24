@@ -9,10 +9,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 public class SubjectClientAdapter implements WordClientPort {
 
 	@Autowired 
-	private WordRestClient wordRestClient;
+	private WordRestClient subjectRestClient;
 	
 	public String getWord() {
-		return wordRestClient.getWord("subject"); 
+		return subjectRestClient.getWord("subject"); 
 	}
 	
 }

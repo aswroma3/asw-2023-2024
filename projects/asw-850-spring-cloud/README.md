@@ -19,7 +19,7 @@ L'applicazione viene mostrata in più versioni.
 
 * [g-sentence-circuit-breaker-retry](g-sentence-circuit-breaker-retry/): uso di circuit breaker e di retry: [Spring Cloud Circuit Breaker](https://spring.io/projects/spring-cloud-circuitbreaker) e [Resilience4J](https://github.com/resilience4j/resilience4j)
 
-* [h-sentence-triple-circuit-breaker](h-sentence-triple-circuit-breaker/): uso di tre circuit breaker separati per i tre servizi per le parole 
+* [h-sentence-independent-circuit-breakers](h-sentence-independent-circuit-breakers/): uso di tre circuit breaker separati e indipendenti per i tre servizi per le parole 
 
 * [i-sentence-apigateway](i-sentence-apigateway/): uso di un API gateway: [Spring Cloud Gateway](https://spring.io/projects/spring-cloud-gateway)
 

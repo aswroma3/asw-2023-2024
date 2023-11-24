@@ -4,7 +4,7 @@ Questo sottoprogetto mostra una versione dell'applicazione **sentence** che, olt
 
 I servizi *word-service* e *sentence-service* agiscono da client nei confronti del servizio di service discovery. 
 
-Il servizio *sentence-service* usa i client REST con un circuit breaker e retry basati su *Resilience4J* per accedere alle diverse istanze del servizio *word-service*. 
+Il servizio *sentence-service* usa i client REST con circuit breaker e retry basati su *Resilience4J* per accedere alle diverse istanze del servizio *word-service*. 
 
 Il servizio *api-gateway* è un API Gateway che espone le funzionalità dell'applicazione sulla porta *8080*. 
 

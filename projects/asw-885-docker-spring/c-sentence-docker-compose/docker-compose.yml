@@ -1,7 +1,7 @@
 version: "3.8"
 services:
   consul:
-    image: hashicorp/consul
+    image: docker.io/hashicorp/consul
   subject:
     build: ./word-service
     image: aswroma3/sentence-word:2023-10-compose 

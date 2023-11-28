@@ -36,7 +36,7 @@ spring:
         - SetPath=/
         - name: CircuitBreaker
           args: 
-            name: defaultCircuitBreaker 
+            name: sentenceCircuitBreaker 
             fallbackUri: forward:/fallback/sentence
       - id: subject_route
         uri: lb://subject
@@ -46,7 +46,7 @@ spring:
         - SetPath=/
         - name: CircuitBreaker
           args: 
-            name: defaultCircuitBreaker 
+            name: subjectCircuitBreaker 
             fallbackUri: forward:/fallback/subject
       - id: verb_route
         uri: lb://verb
@@ -56,7 +56,7 @@ spring:
         - SetPath=/
         - name: CircuitBreaker
           args: 
-            name: defaultCircuitBreaker 
+            name: verbCircuitBreaker 
             fallbackUri: forward:/fallback/verb
       - id: object_route
         uri: lb://object
@@ -66,7 +66,7 @@ spring:
         - SetPath=/
         - name: CircuitBreaker
           args: 
-            name: defaultCircuitBreaker 
+            name: objectCircuitBreaker 
             fallbackUri: forward:/fallback/object
       - id: index_route
         uri: lb://sentence

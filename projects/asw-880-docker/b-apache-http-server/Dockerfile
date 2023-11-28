@@ -3,7 +3,7 @@
 ###########################################
 
 # Base image is Ubuntu
-FROM ubuntu:18.04
+FROM ubuntu:22.04
 
 # Author: Luca Cabibbo 
 LABEL author="Luca Cabibbo <luca.cabibbo@uniroma3.it>"

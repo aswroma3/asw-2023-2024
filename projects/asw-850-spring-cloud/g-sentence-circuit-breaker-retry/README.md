@@ -40,7 +40,7 @@ Inoltre, *Consul* può essere arrestato con lo script `stop-consul.sh`.
 
 * lo script `run-sentence-replicated.sh` avvia due istanze del servizio *word-service* per ciascuno dei suoi tre profili (ma una sola istanza del servizio *sentence-service*)
 
-* gli script `run-sentence-replicated-with-delays.sh`, `run-sentence-replicated-with-failures.sh` e `run-sentence-replicated-with-heavy-failures.sh` avviano più istanze dei servizi per le parole, con l'introduzione di ritardi e la possibilità di fallimenti 
+* gli script `run-sentence-replicated-with-delays.sh`, `run-sentence-replicated-with-long-delays.sh`, `run-sentence-replicated-with-failures.sh` e `run-sentence-replicated-with-heavy-failures.sh` avviano più istanze dei servizi per le parole, con l'introduzione di ritardi e la possibilità di fallimenti 
 
 ### Esperimenti 
 

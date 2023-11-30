@@ -65,7 +65,7 @@ resilience4j:
     retry-aspect-order: 2
     instances:
       wordClientRetry:
-        max-attempts: 3
+        max-attempts: 2
         wait-duration: 500ms
         # eccezioni che causano un retry 
         retry-exceptions:

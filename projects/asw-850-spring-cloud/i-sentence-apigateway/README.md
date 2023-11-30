@@ -39,11 +39,13 @@ Inoltre, *Consul* può essere arrestato con lo script `stop-consul.sh`.
 
 * lo script `run-sentence-with-delays.sh` introduce un ritardo sia nel servizio delle parole che nel servizio delle frasi (le latenze si sommano)
 
+* lo script `run-sentence-with-long-delays.sh` introduce un ritardo sia nel servizio delle parole che nel servizio delle frasi (con una latenza più alta)
+
 * lo script `run-sentence-with-failures.sh` introduce la possibilità che uno o più servizi delle parole falliscano, con una certa probabilità (le parole mancanti vengono sostituite con degli asterischi) 
 
 * lo script `run-sentence-replicated.sh` avvia due istanze del servizio *word-service* per ciascuno dei suoi tre profili, ma anche due istanze del servizio *sentence-service*
 
-* gli script `run-sentence-replicated-with-delays.sh` e `run-sentence-replicated-with-failures.sh` avviano più istanze dei servizi per le parole e per le frasi, con l'introduzione di ritardi e la possibilità di fallimenti 
+* gli script `run-sentence-replicated-with-delays.sh`, `run-sentence-replicated-with-long-delays.sh`, `run-sentence-replicated-with-failures.sh` e `run-sentence-replicated-with-heavy-failures.sh` avviano più istanze dei servizi per le parole, con l'introduzione di ritardi e la possibilità di fallimenti 
 
 ### Esperimenti 
 

@@ -1,20 +1,23 @@
 package asw.sentence.sentenceservice.wordclient;
 
 import asw.sentence.sentenceservice.domain.WordClientAsyncPort;
+import asw.sentence.sentenceservice.domain.WordClientPort;
 
 import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.concurrent.CompletableFuture;
+import org.springframework.scheduling.annotation.Async;
 
 @Service 
 public class ObjectClientAsyncAdapter implements WordClientAsyncPort {
 
 	@Autowired 
-	private WordRestClientAsync wordRestClientAsync;
+	private WordClientPort objectClientAdapter;
 	
+	@Async
 	public CompletableFuture<String> getWordAsync() {
-		return wordRestClientAsync.getWordAsync("object"); 
+		return CompletableFuture.completedFuture(objectClientAdapter.getWord()); 
 	}
 
 }

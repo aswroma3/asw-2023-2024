@@ -14,10 +14,10 @@ java -Xms64m -Xmx128m -jar -Dspring.profiles.active=verb -Dasw.sentence.wordserv
 java -Xms64m -Xmx128m -jar -Dspring.profiles.active=object -Dasw.sentence.wordservice.instancename=o1 -Dasw.sentence.wordservice.delay=150 word-service/build/libs/word.jar &
 java -Xms64m -Xmx128m -jar -Dspring.profiles.active=object -Dasw.sentence.wordservice.instancename=o2 -Dasw.sentence.wordservice.delay=150 word-service/build/libs/word.jar &
 
-echo Starting Sentence Service [*2, 1 sync + 1 async, delay=150]
+echo Starting Sentence Service [*2, delay=150]
 
-java -Xms64m -Xmx128m -jar -Dasw.sentence.sentenceservice.instancename=S1-SYNC -Dasw.sentence.sentenceservice.delay=150 sentence-service/build/libs/sentence.jar &
-java -Xms64m -Xmx128m -jar -Dasw.sentence.sentenceservice.instancename=S2-ASYNC -Dasw.sentence.sentenceservice.delay=150 sentence-service-async/build/libs/sentence-async.jar &
+java -Xms64m -Xmx128m -jar -Dasw.sentence.sentenceservice.instancename=S1 -Dasw.sentence.sentenceservice.delay=150 sentence-service/build/libs/sentence.jar &
+java -Xms64m -Xmx128m -jar -Dasw.sentence.sentenceservice.instancename=S2 -Dasw.sentence.sentenceservice.delay=150 sentence-service/build/libs/sentence.jar &
 
 sleep 10
 

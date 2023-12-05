@@ -23,7 +23,6 @@ server:
 #  port: ${PORT:${SERVER_PORT:0}}
   port: 8080
 
-
 # ATTENZIONE: 
 # QUESTA CONFIGURAZIONE E' PENSATA SOLO PER EFFETTUARE DEGLI ESPERIMENTI
 # MA NON VA USATA IN PRODUZIONE
@@ -53,3 +52,4 @@ resilience4j:
         retry-exceptions:
          - org.springframework.web.client.RestClientException
          - org.springframework.web.reactive.function.client.WebClientException
+

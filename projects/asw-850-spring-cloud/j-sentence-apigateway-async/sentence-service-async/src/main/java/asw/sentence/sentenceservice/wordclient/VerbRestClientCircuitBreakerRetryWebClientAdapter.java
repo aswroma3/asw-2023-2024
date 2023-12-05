@@ -3,7 +3,6 @@ package asw.sentence.sentenceservice.wordclient;
 import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.context.annotation.Primary;
 
 import org.springframework.web.reactive.function.client.WebClient;
 import org.springframework.web.reactive.function.client.WebClientException;
@@ -21,10 +20,6 @@ public class VerbRestClientCircuitBreakerRetryWebClientAdapter implements WordRe
 	
     @CircuitBreaker(name = "verbClientCircuitBreaker", fallbackMethod = "getFallbackWord")
     @Retry(name = "wordClientRetry")
-	// oppure 
-    // @CircuitBreaker(name = "verbClientCircuitBreaker", fallbackMethod = "getFallbackWord")
-	// oppure 
-    // @Retry(name = "wordClientRetry", fallbackMethod = "getFallbackWord")
 	public String getWord(String service) {
 		String serviceUri = "http://" + service; 
         Mono<String> response = webClient

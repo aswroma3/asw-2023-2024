@@ -26,6 +26,7 @@ spring:
           # sulla base dei servizi registrati nel servizio di service discover (default=false) 
           # enabled: true       
           enabled: false
+      # il time limiter del circuit breaker è settato a 500ms in Resilience4JConfig
       routes:
       - id: sentence_route
         uri: lb://sentence
@@ -127,6 +128,10 @@ resilience4j:
         permitted-number-of-calls-in-half-open-state: 10
         wait-duration-in-open-state: 5s
   # see https://resilience4j.readme.io/docs/retry 
+
+asw: 
+  # timeout per il circuit breaker, usato in Resilience4JConfig (il default di R4J è 1000 ms)
+  resilience4j.timelimiter.timeoutduration: 500 
 
 logging:
   level:

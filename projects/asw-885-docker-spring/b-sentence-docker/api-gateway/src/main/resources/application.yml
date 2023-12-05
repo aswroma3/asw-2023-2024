@@ -27,6 +27,7 @@ spring:
           # sulla base dei servizi registrati nel servizio di service discover (default=false) 
           # enabled: true       
           enabled: false
+      # il time limiter del circuit breaker è settato a 500ms in Resilience4JConfig
       routes:
       - id: sentence_route
         uri: lb://sentence
@@ -92,42 +93,46 @@ resilience4j:
     circuit-breaker-aspect-order: 1
     instances:
       sentenceCircuitBreaker:
-        wait-duration-in-open-state: 15s
-        permitted-number-of-calls-in-half-open-state: 10
         sliding-window-type: count-based
         sliding-window-size: 20
         minimum-number-of-calls: 10
-        slow-call-duration-threshold: 5s
-        slow-call-rate-threshold: 50 
         failure-rate-threshold: 30
+        slow-call-rate-threshold: 50 
+        slow-call-duration-threshold: 3s
+        permitted-number-of-calls-in-half-open-state: 10
+        wait-duration-in-open-state: 5s
       subjectCircuitBreaker:
-        wait-duration-in-open-state: 15s
-        permitted-number-of-calls-in-half-open-state: 10
         sliding-window-type: count-based
         sliding-window-size: 20
         minimum-number-of-calls: 10
-        slow-call-duration-threshold: 5s
-        slow-call-rate-threshold: 50 
         failure-rate-threshold: 30
+        slow-call-rate-threshold: 50 
+        slow-call-duration-threshold: 2s
+        permitted-number-of-calls-in-half-open-state: 10
+        wait-duration-in-open-state: 5s
       verbCircuitBreaker:
-        wait-duration-in-open-state: 15s
-        permitted-number-of-calls-in-half-open-state: 10
         sliding-window-type: count-based
         sliding-window-size: 20
         minimum-number-of-calls: 10
-        slow-call-duration-threshold: 5s
-        slow-call-rate-threshold: 50 
         failure-rate-threshold: 30
+        slow-call-rate-threshold: 50 
+        slow-call-duration-threshold: 2s
+        permitted-number-of-calls-in-half-open-state: 10
+        wait-duration-in-open-state: 5s
       objectCircuitBreaker:
-        wait-duration-in-open-state: 15s
-        permitted-number-of-calls-in-half-open-state: 10
         sliding-window-type: count-based
         sliding-window-size: 20
         minimum-number-of-calls: 10
-        slow-call-duration-threshold: 5s
-        slow-call-rate-threshold: 50 
         failure-rate-threshold: 30
+        slow-call-rate-threshold: 50 
+        slow-call-duration-threshold: 2s
+        permitted-number-of-calls-in-half-open-state: 10
+        wait-duration-in-open-state: 5s
   # see https://resilience4j.readme.io/docs/retry 
+
+asw: 
+  # timeout per il circuit breaker, usato in Resilience4JConfig (il default di R4J è 1000 ms)
+  resilience4j.timelimiter.timeoutduration: 500 
 
 logging:
   level:

@@ -24,7 +24,6 @@ server:
 #  port: ${PORT:${SERVER_PORT:0}}
   port: 8080
 
-
 # ATTENZIONE: 
 # QUESTA CONFIGURAZIONE E' PENSATA SOLO PER EFFETTUARE DEGLI ESPERIMENTI
 # MA NON VA USATA IN PRODUZIONE
@@ -34,39 +33,39 @@ resilience4j:
     circuit-breaker-aspect-order: 1
     instances:
       subjectClientCircuitBreaker:
-        wait-duration-in-open-state: 15s
-        permitted-number-of-calls-in-half-open-state: 10
         sliding-window-type: count-based
         sliding-window-size: 20
         minimum-number-of-calls: 10
-        slow-call-duration-threshold: 5s
-        slow-call-rate-threshold: 50 
         failure-rate-threshold: 30
+        slow-call-rate-threshold: 50 
+        slow-call-duration-threshold: 2s
+        permitted-number-of-calls-in-half-open-state: 10
+        wait-duration-in-open-state: 5s
       verbClientCircuitBreaker:
-        wait-duration-in-open-state: 15s
-        permitted-number-of-calls-in-half-open-state: 10
         sliding-window-type: count-based
         sliding-window-size: 20
         minimum-number-of-calls: 10
-        slow-call-duration-threshold: 5s
-        slow-call-rate-threshold: 50 
         failure-rate-threshold: 30
+        slow-call-rate-threshold: 50 
+        slow-call-duration-threshold: 2s
+        permitted-number-of-calls-in-half-open-state: 10
+        wait-duration-in-open-state: 5s
       objectClientCircuitBreaker:
-        wait-duration-in-open-state: 15s
-        permitted-number-of-calls-in-half-open-state: 10
         sliding-window-type: count-based
         sliding-window-size: 20
         minimum-number-of-calls: 10
-        slow-call-duration-threshold: 5s
-        slow-call-rate-threshold: 50 
         failure-rate-threshold: 30
+        slow-call-rate-threshold: 50 
+        slow-call-duration-threshold: 2s
+        permitted-number-of-calls-in-half-open-state: 10
+        wait-duration-in-open-state: 5s
   # see https://resilience4j.readme.io/docs/retry 
   retry:
     # 2>1: retry ha priorità maggiore di circuit breaker  
     retry-aspect-order: 2
     instances:
       wordClientRetry:
-        max-attempts: 3
+        max-attempts: 2
         wait-duration: 500ms
         # eccezioni che causano un retry 
         retry-exceptions:

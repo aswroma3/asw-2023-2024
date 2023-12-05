@@ -128,7 +128,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 				node.vm.provision :shell, :inline => ASW_RESOURCES + "java/setup-maven.sh"
 				
 				# crea un link simbolico alla cartella dei progetti asw nella cartella dell'utente di default 
-				node.vm.provision :shell, :inline => 'ln -s /home/asw/projects projects'				
+				# node.vm.provision :shell, :inline => 'ln -s /home/asw/projects projects'				
             end
 
 			# 
@@ -187,6 +187,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 				node.vm.provision :shell, :inline => ASW_RESOURCES + "kube-cluster/setup-helm.sh"
             end
 			
+			# crea un link simbolico alla cartella dei progetti asw nella cartella dell'utente di default 
+			node.vm.provision :shell, :inline => 'ln -s /home/asw/projects projects'
+
 			node.vm.provision "shell" do |s| 
 				s.inline = ASW_RESOURCES + "done.sh $1"
 				s.args = [ opts[:name] ]

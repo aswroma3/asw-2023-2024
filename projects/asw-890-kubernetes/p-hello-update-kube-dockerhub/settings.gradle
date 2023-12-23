@@ -1,5 +1,0 @@
-include 'hello-v1'
-include 'hello-v2'
-include 'hello-v3'
-
-rootProject.name = 'asw-hello-update'

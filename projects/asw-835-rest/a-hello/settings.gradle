@@ -1,4 +1,0 @@
-include "hello-server"
-include "hello-client"
-include "hello-client-resttemplate"
-rootProject.name = 'hello'

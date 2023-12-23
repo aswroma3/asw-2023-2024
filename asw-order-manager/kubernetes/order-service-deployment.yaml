@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert --out kubernetes
+    kompose.version: 1.31.2 (HEAD)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: order-service
+  name: order-service
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      io.kompose.service: order-service
+  strategy: {}
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert --out kubernetes
+        kompose.version: 1.31.2 (HEAD)
+      creationTimestamp: null
+      labels:
+        io.kompose.network/asw-order-manager-default: "true"
+        io.kompose.service: order-service
+    spec:
+      containers:
+        - image: local/order-service
+          name: order-service
+          resources: {}
+      restartPolicy: Always
+status: {}

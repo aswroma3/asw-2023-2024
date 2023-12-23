@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert --out kubernetes
+    kompose.version: 1.31.2 (HEAD)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: consul
+  name: consul
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: consul
+  strategy: {}
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert --out kubernetes
+        kompose.version: 1.31.2 (HEAD)
+      creationTimestamp: null
+      labels:
+        io.kompose.network/asw-order-manager-default: "true"
+        io.kompose.service: consul
+    spec:
+      containers:
+        - image: hashicorp/consul
+          name: consul
+          ports:
+            - containerPort: 8500
+              hostPort: 8081
+              protocol: TCP
+          resources: {}
+      hostname: localhost
+      restartPolicy: Always
+status: {}

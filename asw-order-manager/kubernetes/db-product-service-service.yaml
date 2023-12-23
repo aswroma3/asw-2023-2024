@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    kompose.cmd: kompose convert --out kubernetes
+    kompose.version: 1.31.2 (HEAD)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: db-product-service
+  name: db-product-service
+spec:
+  ports:
+    - name: "8083"
+      port: 8083
+      targetPort: 5432
+  selector:
+    io.kompose.service: db-product-service
+status:
+  loadBalancer: {}

@@ -7,7 +7,7 @@ spring:
     consul:
       host: localhost
       port: 8500
-      discovery: 
+      discovery:
         instanceId: ${spring.application.name}-${spring.cloud.client.hostname}-${random.value}
         healthCheckPath: /actuator/health
         healthCheckInterval: 10s
@@ -15,7 +15,8 @@ spring:
         # dopo quanto tempo consul deve smettere di restituire servizi che non rispondono all'health check? 
         healthCheckCriticalTimeout: 45s
         # consul deve restituire solo servizi che passano l'health check (default=false) 
-        queryPassing: true 
+        queryPassing: true
+        prefer-ip-address: true
     loadbalancer: 
       ribbon.enabled: false 
     # spring cloud gateway routes 

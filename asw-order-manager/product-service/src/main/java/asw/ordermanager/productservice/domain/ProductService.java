@@ -38,6 +38,7 @@ public class ProductService {
 		return products;
 	}	
 
+	@Transactional
  	public Product updateProductStockLevel(String name, int stockLevelVariation) {
 		Product product = getProduct(name); 
 		product.setStockLevel(product.getStockLevel() + stockLevelVariation);

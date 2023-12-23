@@ -9,11 +9,15 @@ services:
     image: local/api-gateway
     ports:
       - "8080:8080"
+    deploy:
+      replicas: 1
   consul:
     image: hashicorp/consul
     hostname: localhost
     ports:
       - "8081:8500"
+    deploy:
+      replicas: 1
   order-service:
     build:
       context: .

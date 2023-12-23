@@ -6,7 +6,7 @@ services:
       dockerfile: Dockerfile
       args:
         SERVICE_NAME: api-gateway
-    image: local/api-gateway
+    image: localhost/api-gateway
     ports:
       - "8080:8080"
     deploy:
@@ -15,7 +15,7 @@ services:
     image: hashicorp/consul
     hostname: localhost
     ports:
-      - "8081:8500"
+      - "8500:8500"
     deploy:
       replicas: 1
   order-service:
@@ -24,7 +24,7 @@ services:
       dockerfile: Dockerfile
       args:
         SERVICE_NAME: order-service
-    image: local/order-service
+    image: localhost/order-service
     deploy:
       replicas: 2
   order-validation-service:
@@ -33,7 +33,7 @@ services:
       dockerfile: Dockerfile
       args:
         SERVICE_NAME: order-validation-service
-    image: local/order-validation-service
+    image: localhost/order-validation-service
     deploy:
       replicas: 2
   product-service:

@@ -1,4 +1,13 @@
 version: "3"
+volumes:
+  order-service-data:
+    driver: local
+  product-service-data:
+    driver: local
+  order-validation-service-data:
+    driver: local
+  consul-data:
+    driver: local
 services:
   api-gateway:
     build:
@@ -14,6 +23,8 @@ services:
   consul:
     image: hashicorp/consul
     hostname: localhost
+    volumes:
+      - consul-data:/consul/data
     ports:
       - "8500:8500"
     deploy:
@@ -47,18 +58,24 @@ services:
       replicas: 2
   db-order-service:
     image: postgres
+    volumes:
+      - order-service-data:/var/lib/postgresql/data
     environment:
       POSTGRES_PASSWORD: ordermanager
     ports:
       - "8082:5432"
   db-product-service:
     image: postgres
+    volumes:
+      - product-service-data:/var/lib/postgresql/data
     environment:
       POSTGRES_PASSWORD: ordermanager
     ports:
       - "8083:5432"
   db-order-validation-service:
     image: postgres
+    volumes:
+      - order-validation-service-data:/var/lib/postgresql/data
     environment:
       POSTGRES_PASSWORD: ordermanager
     ports:

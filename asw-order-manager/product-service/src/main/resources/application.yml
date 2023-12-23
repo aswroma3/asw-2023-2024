@@ -1,8 +1,13 @@
 # application.yml
 --- 
-spring: 
+spring:
   application: 
     name: productservice
+  datasource:
+    url: jdbc:postgresql://db-product-service:5432/postgres
+    username: postgres
+    password: ordermanager
+
   # CONSUL 
   cloud:
     consul:
@@ -19,16 +24,22 @@ spring:
         queryPassing: true
         prefer-ip-address: true
     loadbalancer: 
-      ribbon.enabled: false 
-      
+      ribbon.enabled: false
+
+  jpa:
+    # fa il logging dei comandi sql eseguiti
+    # show-sql: true
+    # disable OSIV
+    open-in-view: false
+    hibernate:
+      ddl-auto: create-drop
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+
 server: 
   port: ${PORT:${SERVER_PORT:0}}
 #  port: 8080
 #  port: 8082 
   # per swagger dietro un api gateway 
   forward-headers-strategy: framework
-  
-# fa il logging dei comandi sql eseguiti 
-#spring.jpa.show-sql: true
-# disable OSIV
-spring.jpa.open-in-view: false

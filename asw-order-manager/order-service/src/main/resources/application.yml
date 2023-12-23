@@ -3,6 +3,22 @@
 spring: 
   application: 
     name: orderservice
+  datasource:
+    url: jdbc:postgresql://db-order-service:5432/postgres
+    username: postgres
+    password: ordermanager
+
+  jpa:
+    # fa il logging dei comandi sql eseguiti
+    # show-sql: true
+    # disable OSIV
+    open-in-view: false
+    hibernate:
+      ddl-auto: create-drop
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+
   # CONSUL 
   cloud:
     consul:
@@ -27,9 +43,5 @@ server:
 #  port: 8081 
   # per swagger dietro un api gateway 
   forward-headers-strategy: framework
-  
-# fa il logging dei comandi sql eseguiti 
-#spring.jpa.show-sql: true
-# disable OSIV
-spring.jpa.open-in-view: false
+
 

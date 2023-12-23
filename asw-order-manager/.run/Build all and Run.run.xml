@@ -3,8 +3,6 @@
     <deployment type="docker-compose.yml">
       <settings>
         <option name="envFilePath" value="" />
-        <option name="removeImagesOnComposeDown" value="LOCAL" />
-        <option name="removeVolumesOnComposeDown" value="true" />
         <option name="commandLineOptions" value="--build" />
         <option name="sourceFilePath" value="docker-compose.yml" />
       </settings>

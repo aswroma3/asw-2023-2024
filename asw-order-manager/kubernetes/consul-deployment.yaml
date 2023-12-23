@@ -13,7 +13,8 @@ spec:
   selector:
     matchLabels:
       io.kompose.service: consul
-  strategy: {}
+  strategy:
+    type: Recreate
   template:
     metadata:
       annotations:
@@ -29,9 +30,16 @@ spec:
           name: consul
           ports:
             - containerPort: 8500
-              hostPort: 8081
+              hostPort: 8500
               protocol: TCP
           resources: {}
+          volumeMounts:
+            - mountPath: /consul/data
+              name: consul-data
       hostname: localhost
       restartPolicy: Always
+      volumes:
+        - name: consul-data
+          persistentVolumeClaim:
+            claimName: consul-data
 status: {}

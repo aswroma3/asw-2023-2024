@@ -38,10 +38,10 @@ spec:
           resources: {}
           volumeMounts:
             - mountPath: /var/lib/postgresql/data
-              name: db-order-validation-service-claim0
+              name: order-validation-service-data
       restartPolicy: Always
       volumes:
-        - name: db-order-validation-service-claim0
+        - name: order-validation-service-data
           persistentVolumeClaim:
-            claimName: db-order-validation-service-claim0
+            claimName: order-validation-service-data
 status: {}

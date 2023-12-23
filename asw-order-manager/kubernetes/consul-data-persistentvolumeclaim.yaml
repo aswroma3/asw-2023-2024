@@ -3,8 +3,8 @@ kind: PersistentVolumeClaim
 metadata:
   creationTimestamp: null
   labels:
-    io.kompose.service: db-product-service-claim0
-  name: db-product-service-claim0
+    io.kompose.service: consul-data
+  name: consul-data
 spec:
   accessModes:
     - ReadWriteOnce

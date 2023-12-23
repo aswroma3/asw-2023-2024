@@ -3,8 +3,8 @@ kind: PersistentVolumeClaim
 metadata:
   creationTimestamp: null
   labels:
-    io.kompose.service: db-order-validation-service-claim0
-  name: db-order-validation-service-claim0
+    io.kompose.service: order-service-data
+  name: order-service-data
 spec:
   accessModes:
     - ReadWriteOnce

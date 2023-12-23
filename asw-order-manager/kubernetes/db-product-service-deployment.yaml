@@ -38,10 +38,10 @@ spec:
           resources: {}
           volumeMounts:
             - mountPath: /var/lib/postgresql/data
-              name: db-product-service-claim0
+              name: product-service-data
       restartPolicy: Always
       volumes:
-        - name: db-product-service-claim0
+        - name: product-service-data
           persistentVolumeClaim:
-            claimName: db-product-service-claim0
+            claimName: product-service-data
 status: {}

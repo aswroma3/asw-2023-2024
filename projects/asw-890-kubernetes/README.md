@@ -1,4 +1,4 @@
-# Orchestrazione di contenitori con Kubernetes (asw-890)
+# Orchestrazione di container con Kubernetes (asw-890)
 
 Questo progetto contiene alcune applicazioni che esemplificano il rilascio di applicazioni a servizi mediante l'orchestrazione di container con **Kubernetes**. 
 
@@ -7,7 +7,7 @@ dell'applicazione distribuita **sentence** descritte nei progetti [asw-850-sprin
 
 * [a-hello-kube-dockerhub](a-hello-kube-dockerhub/): codice sorgente per l'applicazione **hello** (le immagini dei container sono già disponibili su *Docker Hub*)
 
-* [b-hello-pod](b-hello-pod/): esemplifica l'uso di uan risorsa *pod* 
+* [b-hello-pod](b-hello-pod/): esemplifica l'uso di una risorsa *pod* 
 
 * [c-hello-rs](c-hello-rs/): esemplifica l'uso di una risorsa *replica set* 
 
@@ -27,9 +27,11 @@ dell'applicazione distribuita **sentence** descritte nei progetti [asw-850-sprin
 
 * [n-sentence-application-helm](n-sentence-application-helm/): la specifica dell'applicazione **sentence** per Kubernetes basata su Helm 
 
-* [p-hello-update-kube-dockerhub](p-hello-update-kube-dockerhub/): codice sorgente per tre diverse versione dell'applicazione **hello-update** (le immagini dei container sono già disponibili su *Docker Hub*)
+* [o-sentence-application-ingress-path-rewriting](o-sentence-application-ingress-path-rewriting/): esperimenti con l'ingress controller ed il path rewriting 
 
-* [q-hello-update](q-hello-update/): esemplifica l'esecuzione di rolling update con Kubernetes con riferimento all'applicazione **hello-update** 
+* [r-hello-update-kube-dockerhub](r-hello-update-kube-dockerhub/): codice sorgente per tre diverse versione dell'applicazione **hello-update** (le immagini dei container sono già disponibili su *Docker Hub*)
+
+* [s-hello-update](s-hello-update/): esperimenti che esemplificano l'esecuzione di rolling update con Kubernetes con riferimento all'applicazione **hello-update** 
 
 
 ## Ambiente di esecuzione 

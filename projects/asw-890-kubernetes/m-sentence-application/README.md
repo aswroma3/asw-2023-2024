@@ -11,7 +11,9 @@ Vanno però utilizzate più finestre (terminali) diverse. In genere, una per l'a
 
 Per avviare l'applicazione sul nodo **kube-dev**, eseguire lo script `deploy-sentence.sh`. 
 
-Complessivamente, l'applicazione *sentence* espone un servizio REST sul cluster *kube-cluster* all'indirizzo **http://sentence:31080**, da cui è possibile ottenere una frase casuale.
+Complessivamente, l'applicazione *sentence* espone un servizio REST sul cluster *kube-cluster* 
+agli indirizzi **http://sentence.aswroma3.it** e **http://sentence.aswroma3.it:31080**, 
+da cui è possibile ottenere una frase casuale.
 
 In pratica, l'applicazione può essere verificata usando gli script `run-curl-client-ingress.sh` e `run-curl-client-nodeport.sh`. 
 

@@ -3,8 +3,8 @@
 # accede al servizio tramite service nodeport - sulla porta del servizio, su uno dei nodi del cluster  
 # funziona anche dall'esterno del cluster (dal nodo dev)  
 
-SERVICE=apigateway
-SERVICE_NAMESPACE=sentence
+SERVICE=hello
+SERVICE_NAMESPACE=hello-update
 
 SERVICE_HOST=kube-node
 # oppure 

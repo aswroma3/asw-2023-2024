@@ -1,7 +1,12 @@
 #!/bin/bash
 
+# numero di chiamate 
+N=${1:-10}
+
+# intervallo tra una chiamata e l'altra (ms) 
+DELAY=${2:-500}
+
 # accede al servizio tramite service nodeport - sulla porta del servizio, su uno dei nodi del cluster  
-# funziona anche dall'esterno del cluster (dal nodo dev)  
 
 SERVICE=apigateway
 SERVICE_NAMESPACE=sentence
@@ -17,10 +22,5 @@ SERVICE_NODEPORT=$(kubectl get services/${SERVICE} -n ${SERVICE_NAMESPACE} -o go
 
 echo Accessing ${SERVICE} on ${SERVICE_HOST}:${SERVICE_NODEPORT}
 
-N=${1:-10}
-for ((i=0; i<$N; i++)); do  
-	curl ${SERVICE_HOST}:${SERVICE_NODEPORT}
-	echo "" ; 
-done 
-
+python3 -m rest-python-client-nodeport $N $DELAY ${SERVICE_HOST}:${SERVICE_NODEPORT}
 

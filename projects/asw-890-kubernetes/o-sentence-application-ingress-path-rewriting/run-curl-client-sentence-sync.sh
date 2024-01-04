@@ -1,10 +1,11 @@
 #!/bin/bash
 
-# accede al servizio per una parola tramite ingress  
+# accede al servizio tramite ingress - ovvero, tramite il nome del servizio 
+# funziona anche dall'esterno del cluster (dal nodo dev)  
 
-WORD=${1:-subject}
-
-N=${2:-10}
+# NEL CLUSTER DEVE ESSERE INSTALLATO L'INGRESS CONTROLLER NGINX INGRESS COME ADD-ON, 
+# CHE ASCOLTA SULLA PORTA 31080 (tutti i nodi) E 80 (solo nodi worker)
+# il nome del servizio dovrebbe essere registrato come alias in un DNS o in /etc/hosts, ma qui usiamo un trucco per simularlo  
 
 SERVICE=sentence
 SERVICE_INGRESS_HOST=sentence.aswroma3.it
@@ -23,13 +24,15 @@ SERVICE_HOST=kube-node
 # oppure
 # SERVICE_HOST=kube-cluster
 
-echo Accessing ${SERVICE}/${WORD} on ${SERVICE_INGRESS_HOST}:${INGRESS_PORT}/${WORD}
+echo Accessing ${SERVICE} on ${SERVICE_INGRESS_HOST}:${INGRESS_PORT}
 
+N=${1:-10}
 for ((i=0; i<$N; i++)); do 
-	curl ${SERVICE_INGRESS_HOST}/${WORD} --connect-to ${SERVICE_INGRESS_HOST}:80:${SERVICE_HOST}:${INGRESS_PORT} 
+	curl ${SERVICE_INGRESS_HOST}/sentence/sync --connect-to ${SERVICE_INGRESS_HOST}:80:${SERVICE_HOST}:${INGRESS_PORT} 
 	echo "" ; 
 	# oppure 
-#	curl ${SERVICE_HOST}/${WORD} --header "Host: ${SERVICE_INGRESS_HOST}" 
+#	curl ${SERVICE_HOST}/sentence/sync --header "Host: ${SERVICE_INGRESS_HOST}" 
 #	echo "" ; 
 done 
+
 

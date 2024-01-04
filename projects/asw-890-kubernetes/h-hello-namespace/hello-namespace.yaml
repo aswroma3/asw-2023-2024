@@ -45,8 +45,6 @@ kind: Ingress
 metadata:
   name: hello-ing
   namespace: hello
-#  annotations:
-#    nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
   ingressClassName: nginx
   rules:

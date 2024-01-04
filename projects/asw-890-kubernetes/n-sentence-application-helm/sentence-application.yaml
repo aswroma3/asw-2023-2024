@@ -134,8 +134,8 @@ spec:
         env: 
         - name: ASW_SENTENCE_SENTENCESERVICE_INSTANCENAME
           value: S-SYNC
-        - name: ASW_SENTENCE_SENTENCESERVICE_DELAY
-          value: "50"
+#        - name: ASW_SENTENCE_SENTENCESERVICE_DELAY
+#          value: "50"
         ports:
         - containerPort: 8080
         livenessProbe: 
@@ -156,7 +156,7 @@ spec:
 #            port: 8080
 #          periodSeconds: 10
 #          failureThreshold: 30 
-          
+
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -180,8 +180,8 @@ spec:
         env: 
         - name: ASW_SENTENCE_SENTENCESERVICE_INSTANCENAME
           value: S-ASYNC
-        - name: ASW_SENTENCE_SENTENCESERVICE_DELAY
-          value: "50"
+#        - name: ASW_SENTENCE_SENTENCESERVICE_DELAY
+#          value: "50"
         ports:
         - containerPort: 8080
         livenessProbe: 
@@ -322,6 +322,8 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: sentence
+#  annotations:
+#    nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
   ingressClassName: nginx
   rules:

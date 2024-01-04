@@ -1,10 +1,12 @@
 #!/bin/bash
 
-# accede al servizio per una parola tramite ingress  
+# numero di chiamate 
+N=${1:-10}
 
-WORD=${1:-subject}
+# intervallo tra una chiamata e l'altra (ms) 
+DELAY=${2:-500}
 
-N=${2:-10}
+# accede al servizio tramite service ingress - sulla porta del servizio, su uno dei nodi del cluster  
 
 SERVICE=sentence
 SERVICE_INGRESS_HOST=sentence.aswroma3.it
@@ -19,17 +21,11 @@ SERVICE_HOST=kube-node
 # INGRESS_PORT=31080
 # oppure 
 # INGRESS_PORT=$(kubectl get services/nginx-ingress -n nginx-ingress -o go-template='{{(index .spec.ports 0).nodePort}}')
-# SERVICE_HOST=kube-node
+# SERVICE_HOST=kube-worker
 # oppure
 # SERVICE_HOST=kube-cluster
 
-echo Accessing ${SERVICE}/${WORD} on ${SERVICE_INGRESS_HOST}:${INGRESS_PORT}/${WORD}
+echo Accessing ${SERVICE_INGRESS_HOST} on ${SERVICE_HOST}:${INGRESS_PORT}
 
-for ((i=0; i<$N; i++)); do 
-	curl ${SERVICE_INGRESS_HOST}/${WORD} --connect-to ${SERVICE_INGRESS_HOST}:80:${SERVICE_HOST}:${INGRESS_PORT} 
-	echo "" ; 
-	# oppure 
-#	curl ${SERVICE_HOST}/${WORD} --header "Host: ${SERVICE_INGRESS_HOST}" 
-#	echo "" ; 
-done 
+python3 -m rest-python-client-ingress $N $DELAY ${SERVICE_INGRESS_HOST} ${SERVICE_HOST} ${INGRESS_PORT}
 

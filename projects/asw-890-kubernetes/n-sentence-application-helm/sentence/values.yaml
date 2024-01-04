@@ -6,7 +6,7 @@ sentence:
   image: 
     version: "2023-10"
   withasync: true 
-  withnames: false 
+  withnames: true 
   withdelays: false
   sentence: 
     replicas: 1

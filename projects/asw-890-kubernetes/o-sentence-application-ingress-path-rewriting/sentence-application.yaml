@@ -115,7 +115,7 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: sentence
+  name: sentence-sync
 spec:
   replicas: 1
   selector:
@@ -127,6 +127,7 @@ spec:
       labels:
         app: sentence
         service: sentence
+        type: sync
     spec:
       containers:
       - name: sentence-container
@@ -134,8 +135,8 @@ spec:
         env: 
         - name: ASW_SENTENCE_SENTENCESERVICE_INSTANCENAME
           value: S-SYNC
-        - name: ASW_SENTENCE_SENTENCESERVICE_DELAY
-          value: "50"
+#        - name: ASW_SENTENCE_SENTENCESERVICE_DELAY
+#          value: "50"
         ports:
         - containerPort: 8080
         livenessProbe: 
@@ -156,7 +157,7 @@ spec:
 #            port: 8080
 #          periodSeconds: 10
 #          failureThreshold: 30 
-          
+
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -173,6 +174,7 @@ spec:
       labels:
         app: sentence
         service: sentence
+        type: async
     spec:
       containers:
       - name: sentence-async-container
@@ -180,8 +182,8 @@ spec:
         env: 
         - name: ASW_SENTENCE_SENTENCESERVICE_INSTANCENAME
           value: S-ASYNC
-        - name: ASW_SENTENCE_SENTENCESERVICE_DELAY
-          value: "50"
+#        - name: ASW_SENTENCE_SENTENCESERVICE_DELAY
+#          value: "50"
         ports:
         - containerPort: 8080
         livenessProbe: 
@@ -305,6 +307,38 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
+  name: sentencesync
+spec:
+  selector:
+    app: sentence
+    service: sentence
+    type: sync
+#  type: NodePort
+  ports:
+  - protocol: TCP
+    port: 8080
+    targetPort: 8080
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: sentenceasync
+spec:
+  selector:
+    app: sentence
+    service: sentence
+    type: async
+#  type: NodePort
+  ports:
+  - protocol: TCP
+    port: 8080
+    targetPort: 8080
+
+---
+apiVersion: v1
+kind: Service
+metadata:
   name: apigateway
 spec:
   selector:
@@ -316,26 +350,7 @@ spec:
     port: 8080
     targetPort: 8080
 #    nodePort: 32082
-
----
-apiVersion: networking.k8s.io/v1
-kind: Ingress
-metadata:
-  name: sentence
-spec:
-  ingressClassName: nginx
-  rules:
-  - host: sentence.aswroma3.it 
-    http: 
-      paths: 
-      - pathType: Prefix
-        path: /
-        backend: 
-          service: 
-            name: apigateway
-            port: 
-              number: 8080 
-  
+              
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole

@@ -12,7 +12,7 @@ Vanno però utilizzate più finestre (terminali) diverse. In genere, una per l'a
 
 Per avviare l'applicazione sul nodo **kube-dev**, eseguire lo script `deploy-hello.sh`. 
 
-Complessivamente, l'applicazione *hello* espone un servizio REST sul cluster *kube-cluster* all'indirizzo **http://hello:31080**, da cui è possibile ottenere un saluto.
+Complessivamente, l'applicazione *hello* espone un servizio REST sul cluster *kube-cluster* all'indirizzo **http://hello** (**http://hello:80**), da cui è possibile ottenere un saluto.
 
 In pratica, l'applicazione può essere verificata usando gli script `run-curl-client-ingress.sh` e `run-curl-client-nodeport.sh`. 
 

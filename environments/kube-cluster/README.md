@@ -1,10 +1,10 @@
 # Kubernetes (kube-cluster)
 
-Questo ambiente di esecuzione è composto da un cluster di tre nodi [Kubernetes](https://kubernetes.io/), 
+Questo ambiente di esecuzione è composto da un cluster di tre macchine virtuali [Kubernetes](https://kubernetes.io/), 
 realizzato con [Kubeadm](https://kubernetes.io/docs/reference/setup-tools/kubeadm/), 
-più un nodo per la compilazione dei progetti e per la costruzione delle immagini dei container *Docker*. 
+più una macchina virtuale per la compilazione dei progetti e per la costruzione delle immagini dei container *Docker*. 
 
-E' composto da quattro macchine virtuali
+L'ambiente è composto da quattro macchine virtuali
 
 * le macchine virtuali **kube-1**, **kube-2** e **kube-3** per il cluster *Kubernetes* realizzato con Kubeadm
 
@@ -23,19 +23,27 @@ Le macchine virtuali **kube-1**, **kube-2** e **kube-3** per il cluster *Kuberne
 
 * Kubernetes (Kubeadm) 
 
-Il nodo **kube-1** è configurato come *master*, mentre i nodi **kube-2** e **kube-3** sono configurati come *worker*. 
+* Add on di Kubernetes: Calico Network, NGINX Ingress 
+
+La macchina virtuale **kube-1** è configurata come *control plane*, mentre le macchine virtuali **kube-2** e **kube-3** sono configurate come *nodi worker*. 
 
 Configurazione di rete 
 
-* Indirizzi IP: 10.11.1.71, 10.11.1.72 e 10.11.1.73 (rispettivamente) dei tre nodi 
+* Indirizzi IP: 10.11.1.71, 10.11.1.72 e 10.11.1.73 (rispettivamente) delle tre VM 
 
-* Porte pubblicate sull'host: la porta 8080 (http) è pobblicata sulle porte 8081, 8082, 8083 (rispettivamente) dei tre nodi 
+* Porte pubblicate sull'host: 
+  * la porta 31080 (http dell'ingress controller) è pobblicata sulle porte 31081, 31082, 31083 (rispettivamente) delle tre VM 
+  
+* Alias delle tre VM registrati in */etc/hosts*
+  * *kube-cluster*: tutti e tre le macchine virtuali, *kube-1*, *kube-2* e *kube-3*
+  * *kube-master*: le macchine virtuali per il control plane, *kube-1*
+  * *kube-worker*: le macchine virtuali per i nodi worker, *kube-2* e *kube-3*
 
 Hardware (virtuale) 
 
-* Memoria: 2048 MB (2 GB)  
+* Memoria: 3072 MB (3 GB) - se necessario, si può ridurre a 2048 (2 GB) modificando il Vagrantfile 
 
-* Virtual CPU: 2 
+* Virtual CPU: 3 - se necessario, si può ridurre a 2 modificando il Vagrantfile 
 
 * CPU execution cap: 100% (kube-1), 100% (kube-2 e kube-3) 
 
@@ -52,6 +60,8 @@ La macchina virtuale **kube-dev** ha il seguente software
 * Client Kubernetes (kubectl) 
 
 * Helm 
+
+* Python 
 
 Configurazione di rete 
 

@@ -1,10 +1,10 @@
 #!/bin/bash
 
 STARTING_IP=$1
-CLUSTER_DOMAIN=$2
-CLUSTER_NODE_PREFIX=$3
+CLUSTER_DOMAIN_PREFIX=$2
 # forza la conversione a integer 
-CLUSTER_NUM_NODES=$(($4 + 0))
+CLUSTER_CONTROL_PLANE_NODES=$(($3 + 0))
+CLUSTER_WORKER_NODES=$(($4 + 0))
 
 HOSTS_FILE=/etc/hosts 
 
@@ -22,13 +22,12 @@ function createModifiedEtcHosts
 }
 
 # aggiunge a /etc/hosts le seguenti entry 
-# - "10.11.1.71 kube-1 kube-cluster"
-# - "10.11.1.72 kube-2 kube-cluster"
-# - "10.11.1.73 kube-3 kube-cluster"
+# - "10.11.1.71 kube-1 kube-cluster kube-control-plane"
+# - "10.11.1.72 kube-2 kube-cluster kube-node"
+# - "10.11.1.73 kube-3 kube-cluster kube-node"
 #
 # in teoria, kube-cluster dovrebbe essere servito da un DNS, 
-# a rotazione su uno qualunque di questi nodi. 
-# in pratica, facendo così, kube-cluster coincide con kube-1
+# a rotazione su uno qualunque di questi nodi
 #
 function configureKubeClusterEtcHosts {
 	echo "adding entries for kube-cluster nodes to /etc/hosts"
@@ -36,20 +35,33 @@ function configureKubeClusterEtcHosts {
 	IP_PREFIX=${IP_A}.${IP_B}.${IP_C}.
 	IP_STARTING_NUM=${IP_D}
 
-	for ((i = 1; i <= ${CLUSTER_NUM_NODES}; i++))
+	# prima i nodi del control plane 
+	for ((i = 1; i <= ${CLUSTER_CONTROL_PLANE_NODES}; i++))
 	do 
 		CURRENT_NUM=$(($IP_STARTING_NUM+$i))
 		CURRENT_IP=${IP_PREFIX}${CURRENT_NUM}
-		CURRENT_NODE=${CLUSTER_NODE_PREFIX}$i
-		echo "${CURRENT_IP} ${CURRENT_NODE} ${CLUSTER_DOMAIN}" >> ${HOSTS_FILE}
+		CURRENT_NODE=${CLUSTER_DOMAIN_PREFIX}$i
+		CURRENT_DOMAIN=${CLUSTER_DOMAIN_PREFIX}cluster
+		CURRENT_GROUP=${CLUSTER_DOMAIN_PREFIX}control-plane
+		echo "${CURRENT_IP} ${CURRENT_NODE} ${CURRENT_DOMAIN} ${CURRENT_GROUP}" >> ${HOSTS_FILE}
+	done
+	# poi i nodi worker 
+	for ((i = ${CLUSTER_CONTROL_PLANE_NODES}+1; i <= ${CLUSTER_CONTROL_PLANE_NODES}+${CLUSTER_WORKER_NODES}; i++))
+	do 
+		CURRENT_NUM=$(($IP_STARTING_NUM+$i))
+		CURRENT_IP=${IP_PREFIX}${CURRENT_NUM}
+		CURRENT_NODE=${CLUSTER_DOMAIN_PREFIX}$i
+		CURRENT_DOMAIN=${CLUSTER_DOMAIN_PREFIX}cluster
+		CURRENT_GROUP=${CLUSTER_DOMAIN_PREFIX}node
+		echo "${CURRENT_IP} ${CURRENT_NODE} ${CURRENT_DOMAIN} ${CURRENT_GROUP}" >> ${HOSTS_FILE}
 	done
 }
 
 #function configureKubeClusterEtcHosts {
 #	echo "adding entries for kube-cluster nodes to /etc/hosts"
-#	echo "10.11.1.71 kube-1 kube-cluster" >> ${HOSTS_FILE}
-#	echo "10.11.1.72 kube-2 kube-cluster" >> ${HOSTS_FILE}
-#	echo "10.11.1.73 kube-3 kube-cluster" >> ${HOSTS_FILE}
+#	echo "10.11.1.71 kube-1 kube-cluster kube-control-plane" >> ${HOSTS_FILE}
+#	echo "10.11.1.72 kube-2 kube-cluster kube-node" >> ${HOSTS_FILE}
+#	echo "10.11.1.73 kube-3 kube-cluster kube-node" >> ${HOSTS_FILE}
 #}
 
 echo "setup /etc/hosts on a kube-cluster node"

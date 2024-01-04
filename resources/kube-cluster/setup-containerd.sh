@@ -68,13 +68,13 @@ if ! downloadExists containerd-${CONTAINERD_VERSION}-linux-amd64.tar.gz; then
 fi
 tar Cxzvf /usr/local ${ASW_DOWNLOADS}/containerd-${CONTAINERD_VERSION}-linux-amd64.tar.gz
 mkdir -p /usr/local/lib/systemd/system/ 
-cp ${ASW_RESOURCES}/kube-cluster/containerd.service /usr/local/lib/systemd/system/
+cp ${ASW_RESOURCES}/kube-cluster/containerd/containerd.service /usr/local/lib/systemd/system/
 
 # il file config.toml è stato creato con containerd config default
 # poi editato seguendo https://kubernetes.io/docs/setup/production-environment/container-runtimes/#containerd
 
 mkdir -p /etc/containerd
-cp ${ASW_RESOURCES}/kube-cluster/etc.containerd/config.toml /etc/containerd/config.toml
+cp ${ASW_RESOURCES}/kube-cluster/containerd/config.toml /etc/containerd/config.toml
 
 systemctl daemon-reload
 systemctl enable --now containerd

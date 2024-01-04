@@ -6,8 +6,8 @@
 # 2) https://github.com/kubernetes/ingress-nginx/blob/main/README.md 
 #    https://kubernetes.github.io/ingress-nginx/deploy/ 
 
-# usiamo il secondo (malgrado non sia possibile accedervi sulla porta 80) 
-# perché il promo è molto lento 
+# questo script installa il secondo (malgrado non sia possibile accedervi sulla porta 80) 
+# ascolta http/https su 31080/31443
 
 echo "======================================================="
 echo "installing kubernetes nginx ingress controller (master)"

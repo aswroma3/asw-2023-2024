@@ -1,10 +1,10 @@
 #!/bin/bash
 
 STARTING_IP=$1
-CLUSTER_DOMAIN=$2
-CLUSTER_NODE_PREFIX=$3
+CLUSTER_DOMAIN_PREFIX=$2
 # forza la conversione a integer 
-CLUSTER_NUM_NODES=$(($4 + 0))
+CLUSTER_CONTROL_PLANE_NODES=$(($3 + 0))
+CLUSTER_WORKER_NODES=$(($4 + 0))
 
 HOSTS_FILE=/etc/hosts 
 
@@ -22,13 +22,12 @@ function createModifiedEtcHosts
 }
 
 # aggiunge a /etc/hosts le seguenti entry 
-# - "10.11.1.71 kube-1 kube-cluster"
-# - "10.11.1.72 kube-2 kube-cluster"
-# - "10.11.1.73 kube-3 kube-cluster"
+# - "10.11.1.71 kube-1 kube-cluster kube-control-plane"
+# - "10.11.1.72 kube-2 kube-cluster kube-node"
+# - "10.11.1.73 kube-3 kube-cluster kube-node"
 #
 # in teoria, kube-cluster dovrebbe essere servito da un DNS, 
-# a rotazione su uno qualunque di questi nodi. 
-# in pratica, facendo così, kube-cluster coincide con kube-1
+# a rotazione su uno qualunque di questi nodi
 #
 function configureKubeClusterClientEtcHosts {
 	echo "adding entries for kubernetes dev client node to /etc/hosts"
@@ -37,32 +36,40 @@ function configureKubeClusterClientEtcHosts {
 	IP_PREFIX=${IP_A}.${IP_B}.${IP_C}.
 	IP_STARTING_NUM=${IP_D}
 
-	for ((i = 1; i <= ${CLUSTER_NUM_NODES}; i++))
+	# prima i nodi master 
+	for ((i = 1; i <= ${CLUSTER_CONTROL_PLANE_NODES}; i++))
 	do 
 		CURRENT_NUM=$(($IP_STARTING_NUM+$i))
 		CURRENT_IP=${IP_PREFIX}${CURRENT_NUM}
-		CURRENT_NODE=${CLUSTER_NODE_PREFIX}$i
-		echo "${CURRENT_IP} ${CURRENT_NODE} ${CLUSTER_DOMAIN}" >> ${HOSTS_FILE}
+		CURRENT_NODE=${CLUSTER_DOMAIN_PREFIX}$i
+		CURRENT_DOMAIN=${CLUSTER_DOMAIN_PREFIX}cluster
+		CURRENT_GROUP=${CLUSTER_DOMAIN_PREFIX}control-plane
+		echo "${CURRENT_IP} ${CURRENT_NODE} ${CURRENT_DOMAIN} ${CURRENT_GROUP}" >> ${HOSTS_FILE}
+	done
+	# poi i nodi worker 
+	for ((i = ${CLUSTER_CONTROL_PLANE_NODES}+1; i <= ${CLUSTER_CONTROL_PLANE_NODES}+${CLUSTER_WORKER_NODES}; i++))
+	do 
+		CURRENT_NUM=$(($IP_STARTING_NUM+$i))
+		CURRENT_IP=${IP_PREFIX}${CURRENT_NUM}
+		CURRENT_NODE=${CLUSTER_DOMAIN_PREFIX}$i
+		CURRENT_DOMAIN=${CLUSTER_DOMAIN_PREFIX}cluster
+		CURRENT_GROUP=${CLUSTER_DOMAIN_PREFIX}node
+		echo "${CURRENT_IP} ${CURRENT_NODE} ${CURRENT_DOMAIN} ${CURRENT_GROUP}" >> ${HOSTS_FILE}
 	done
 }
 
 #function configureKubeClusterClientEtcHosts {
-#	echo "adding entries for kubernetes dev client node to /etc/hosts"
-#	echo "10.11.1.71 kube-1 kube-cluster" >> ${HOSTS_FILE}
-#	echo "10.11.1.72 kube-2 kube-cluster" >> ${HOSTS_FILE}
-#	echo "10.11.1.73 kube-3 kube-cluster" >> ${HOSTS_FILE}
+#	echo "adding entries for kube-cluster nodes to /etc/hosts"
+#	echo "10.11.1.71 kube-1 kube-cluster kube-control-plane" >> ${HOSTS_FILE}
+#	echo "10.11.1.72 kube-2 kube-cluster kube-node" >> ${HOSTS_FILE}
+#	echo "10.11.1.73 kube-3 kube-cluster kube-node" >> ${HOSTS_FILE}
 #}
 
-
 # aggiunge a /etc/hosts le seguenti entry 
-# - "10.11.1.131 dev"
+# - "10.11.1.131 kube-dev"
 function configureKubeClusterDevEtcHosts {
 	# calcola il mio indirizzo IP (sulla rete 10.11.1.xx)
-	# ubuntu 16.04 
-	# MY_IP_ADDR=$(ifconfig  | grep 'inet addr:'| grep -v '127.0.0.1' | cut -d: -f2 | awk '{ print $1}' | grep '10.11.1.')
-	# ubuntu 18.04 
-	# MY_IP_ADDR=$(ifconfig  | grep 'inet' | grep -v 'inet6' | grep -v '127.0.0.1' | cut -d: -f2 | awk '{ print $2}' | grep '10.11.1.')
-	# ubuntu 20.04 
+	# ubuntu 20.04 e 22.04
 	MY_IP_ADDR=$(ip address | grep 10.11.1. | awk '{ print $2 }' | cut -d/ -f1)
 	echo "adding entries for kube-dev to /etc/hosts on " ${MY_IP_ADDR}
 	echo ${MY_IP_ADDR} " kube-dev" >> ${HOSTS_FILE}

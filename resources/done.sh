@@ -10,7 +10,7 @@ function line() {
 	echo ""
 }
 
-MESSAGE="+ creazione nodo $1 completata +"
+MESSAGE="+ creazione VM $1 completata +"
 line 
 echo ${MESSAGE}
 line

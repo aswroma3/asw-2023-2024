@@ -7,11 +7,11 @@ curl -X POST "http://localhost:8080/productservice/products" -H "accept: */*" -H
 echo 
 
 curl -X POST "http://localhost:8080/productservice/products" -H "accept: */*" -H "Content-Type: application/json" \
-     -d "{ \"name\": \"Anna Karenina\", \"category\": \"Libro\", \"stockLevel\": \"2\", \"price\": \"10.99\" }"
+     -d "{ \"name\": \"Anna Karenina\", \"category\": \"Libro\", \"stockLevel\": \"1\", \"price\": \"10.99\" }"
 echo 
 
 curl -X POST "http://localhost:8080/productservice/products" -H "accept: */*" -H "Content-Type: application/json" \
-     -d "{ \"name\": \"I promessi sposi\", \"category\": \"Libro\", \"stockLevel\": \"2\", \"price\": \"9.99\" }"
+     -d "{ \"name\": \"I promessi sposi\", \"category\": \"Libro\", \"stockLevel\": \"3\", \"price\": \"9.99\" }"
 echo 
 
 curl -X POST "http://localhost:8080/productservice/products" -H "accept: */*" -H "Content-Type: application/json" \

@@ -10,13 +10,13 @@ echo
 
 curl -X POST "http://localhost:8080/orderservice/orders" -H "accept: */*" -H "Content-Type: application/json" \
      -d "{ \"customer\": \"Woody\", \"address\": \"Roma\", 
-	       \"orderItems\": [ { \"product\": \"Guerra e Pace\", \"quantity\": \"2\" }, { \"product\": \"Anna Karenina\", \"quantity\": \"1\" } ], 
+	       \"orderItems\": [ { \"product\": \"Guerra e Pace\", \"quantity\": \"2\" }, { \"product\": \"Anna Karenina\", \"quantity\": \"2\" } ], 
 		   \"total\": \"50.97\" }"
 echo 
 
 curl -X POST "http://localhost:8080/orderservice/orders" -H "accept: */*" -H "Content-Type: application/json" \
      -d "{ \"customer\": \"Robert\", \"address\": \"Roma\", 
-	       \"orderItems\": [ { \"product\": \"Guerra e Pace\", \"quantity\": \"1\" } ], 
+	       \"orderItems\": [ { \"product\": \"Il Signore degli Anelli\", \"quantity\": \"1\" } ], 
 	       \"total\": \"19.99\" }"
 echo 
 

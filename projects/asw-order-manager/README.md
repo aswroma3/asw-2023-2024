@@ -128,3 +128,9 @@ Inoltre, *Consul* può essere arrestato con lo script `stop-consul.sh`.
 ## Descrizione delle attività da svolgere 
 
 Si veda la descrizione del progetto sul sito web del corso di [Architettura dei sistemi software](http://cabibbo.inf.uniroma3.it/asw/).
+
+
+## Usilizzo di Kafka con Kubernetes
+
+Nel rilascio dell'applicazione *OrderManager* in *Kubernetes*, l'aspetto più difficile è probabilmente l'utilizzo di Kafka.
+Nella cartella [kafka-kubernetes](kafka-kubernetes) è possibile trovare alcuni utili suggerimenti in proposito. 

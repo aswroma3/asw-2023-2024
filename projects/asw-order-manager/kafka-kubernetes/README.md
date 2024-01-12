@@ -15,3 +15,9 @@ Questa specifica di risorse va installata nello stesso namespace delle altre ris
 Utilizzando questa specifica di risorse, 
 nelle applicazioni Spring si potrà accedere a Kafka 
 impostando la proprietà *spring.kafka.bootstrap-servers* al valore *kafka:9092*. 
+
+In alternativa, se si vuole rilasciare le risorse per Kafka in un namespace di nome *kafka*, bisognerà procedere come segue: 
+
+* nel file [kafka.yaml](kafka.yaml), la variabile d'ambiente *KAFKA_ADVERTISED_HOST_NAME* va impostata al valore *kafka.kafka* anziché *kafka*
+
+* dalle applicazioni Spring si potrà accedere a Kafka impostando la proprietà *spring.kafka.bootstrap-servers* al valore *kafka.kafka:9092* anziché *kafka:9092*

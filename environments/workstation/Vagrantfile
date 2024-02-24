@@ -61,6 +61,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
         # node.vm.network "forwarded_port", guest: 8081, host: 8081, auto_correct: true
         # node.vm.network "forwarded_port", guest: 8082, host: 8082, auto_correct: true
         # node.vm.network "forwarded_port", guest: 8083, host: 8083, auto_correct: true
+        # node.vm.network "forwarded_port", guest: 8088, host: 8088, id: 'pgadmin'
+        # node.vm.network "forwarded_port", guest: 8089, host: 8089, id: 'kafka-ui'
         # node.vm.network "forwarded_port", guest: 9092, host: 9092, id: 'kafka'
         # node.vm.network "forwarded_port", guest: 5432, host: 5432, id: 'postgres'
 
